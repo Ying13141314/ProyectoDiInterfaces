@@ -15,11 +15,11 @@
     <children>
         <Pane prefHeight="95.0" prefWidth="1280.0">
             <children>
-                <Pane prefHeight="95.0" prefWidth="70.0" style="-fx-background-color: #e9c46a;">
+                <Pane fx:id="closePane" onMouseClicked="#closePane" prefHeight="95.0" prefWidth="70.0" style="-fx-background-color: #e9c46a;">
                     <children>
                         <ImageView fitHeight="40.0" fitWidth="35.0" layoutX="18.0" layoutY="28.0">
                             <image>
-                                <Image url="@Resources/menuBar.png" />
+                                <Image url="@../Resources/menuBar.png" />
                             </image>
                         </ImageView>
                     </children></Pane>
@@ -27,12 +27,12 @@
                     <children>
                         <ImageView fitHeight="55.0" fitWidth="85.0" layoutX="60.0" layoutY="20.0">
                             <image>
-                                <Image url="@Resources/logo2.png" />
+                                <Image url="@../Resources/logo2.png" />
                             </image>
                         </ImageView>
                     </children>
                 </Pane>
-                <Pane layoutX="270.0" onMouseEntered="#shadowPane" onMouseExited="#normalPane" prefHeight="95.0" prefWidth="200.0" style="-fx-background-color: #e9c46a;">
+                <Pane fx:id="panelBuscarCliente" layoutX="270.0" onMouseClicked="#panelSuperior" onMouseEntered="#shadowPane" onMouseExited="#normalPane" prefHeight="95.0" prefWidth="200.0" style="-fx-background-color: #e9c46a;">
                     <children>
                         <Text fill="WHITE" layoutX="40.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Buscar Cliente">
                             <font>
@@ -40,7 +40,7 @@
                             </font>
                         </Text>
                     </children></Pane>
-                <Pane layoutX="470.0" onMouseEntered="#shadowPane" onMouseExited="#normalPane" prefHeight="95.0" prefWidth="200.0" style="-fx-background-color: #e9c46a;">
+                <Pane fx:id="panelPropuestaVenta" layoutX="470.0" onMouseClicked="#panelSuperior" onMouseEntered="#shadowPane" onMouseExited="#normalPane" prefHeight="95.0" prefWidth="200.0" style="-fx-background-color: #e9c46a;">
                     <children>
                         <Text fill="WHITE" layoutX="57.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Propuesta">
                             <font>
@@ -49,7 +49,7 @@
                         </Text>
                     </children></Pane>
                 <Pane layoutX="670.0" prefHeight="95.0" prefWidth="200.0" style="-fx-background-color: #e9c46a;" />
-                <Pane layoutX="680.0" onMouseEntered="#shadowPane" onMouseExited="#normalPane" prefHeight="95.0" prefWidth="200.0" style="-fx-background-color: #e9c46a;">
+                <Pane fx:id="panelVerVehiculo" layoutX="680.0" onMouseClicked="#panelSuperior" onMouseEntered="#shadowPane" onMouseExited="#normalPane" prefHeight="95.0" prefWidth="200.0" style="-fx-background-color: #e9c46a;">
                     <children>
                         <Text fill="WHITE" layoutX="48.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ver vehículo">
                             <font>
@@ -57,7 +57,7 @@
                             </font>
                         </Text>
                     </children></Pane>
-                <Pane layoutX="880.0" onMouseEntered="#shadowPane" onMouseExited="#normalPane" prefHeight="95.0" prefWidth="200.0" style="-fx-background-color: #e9c46a;">
+                <Pane fx:id="panelVehiculoVenta" layoutX="880.0" onMouseClicked="#panelSuperior" onMouseEntered="#shadowPane" onMouseExited="#normalPane" prefHeight="95.0" prefWidth="200.0" style="-fx-background-color: #e9c46a;">
                     <children>
                         <Text fill="WHITE" layoutX="25.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vehículo en venta">
                             <font>
@@ -65,7 +65,7 @@
                             </font>
                         </Text>
                     </children></Pane>
-                <Pane layoutX="1080.0" onMouseEntered="#shadowPane" onMouseExited="#normalPane" prefHeight="95.0" prefWidth="200.0" style="-fx-background-color: #e9c46a;">
+                <Pane fx:id="panelAltaCliente" layoutX="1080.0" onMouseClicked="#panelSuperior" onMouseEntered="#shadowPane" onMouseExited="#normalPane" prefHeight="95.0" prefWidth="200.0" style="-fx-background-color: #e9c46a;">
                     <children>
                         <Text fill="WHITE" layoutX="52.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alta cliente">
                             <font>
@@ -79,7 +79,7 @@
             <children>
                 <ImageView fitHeight="16.0" fitWidth="1327.0" layoutX="-23.0" layoutY="115.0">
                     <image>
-                        <Image url="@Resources/barra.png" />
+                        <Image url="@../Resources/barra.png" />
                     </image>
                 </ImageView>
                 <Text fx:id="textBienvenido" layoutX="69.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Introduce los datos para poder tramitar el alta como cliente.">
@@ -115,7 +115,7 @@
                         <Font name="Arial Bold" size="18.0" />
                     </font>
                 </Text>
-                <TextField fx:id="tfPrimerApellido" layoutX="621.0" layoutY="170.0" prefHeight="25.0" prefWidth="170.0" />
+                <TextField fx:id="tfApellidos" layoutX="621.0" layoutY="170.0" prefHeight="25.0" prefWidth="170.0" />
                 <Text fx:id="textBienvenido111111" layoutX="390.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha de Nacimiento:">
                     <font>
                         <Font name="Arial Bold" size="18.0" />
@@ -130,7 +130,7 @@
                 <TextField fx:id="tfDireccion" layoutX="1059.0" layoutY="221.0" prefHeight="25.0" prefWidth="170.0" />
                 <ImageView fitHeight="16.0" fitWidth="1327.0" layoutX="-17.0" layoutY="367.0">
                     <image>
-                        <Image url="@Resources/barra.png" />
+                        <Image url="@../Resources/barra.png" />
                     </image>
                 </ImageView>
                 <Text fx:id="textBienvenido12" layoutX="70.0" layoutY="361.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos de contacto">
@@ -150,26 +150,15 @@
                     </font>
                 </Text>
                 <TextField fx:id="tfTelefono" layoutX="151.0" layoutY="468.0" prefHeight="25.0" prefWidth="170.0" />
-                <Text fx:id="textBienvenido111112" layoutX="391.0" layoutY="437.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirmar email:">
-                    <font>
-                        <Font name="Arial Bold" size="18.0" />
-                    </font>
-                </Text>
-                <TextField fx:id="tfConfirmarEmail" layoutX="622.0" layoutY="418.0" prefHeight="25.0" prefWidth="170.0" />
-                <Text fx:id="textBienvenido1111112" layoutX="391.0" layoutY="488.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Confirmar teléfono:">
-                    <font>
-                        <Font name="Arial Bold" size="18.0" />
-                    </font>
-                </Text>
-                <TextField fx:id="tfConfirmarTelefono" layoutX="622.0" layoutY="468.0" prefHeight="25.0" prefWidth="170.0" />
-                <Text fx:id="textBienvenido11111112" layoutX="864.0" layoutY="436.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Cómo quiere que contactemos con usted?">
+                <Text fx:id="textBienvenido11111112" layoutX="399.0" layoutY="436.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Cómo quiere que contactemos con usted?" textAlignment="CENTER" wrappingWidth="392.0">
                     <font>
                         <Font name="Arial Bold" size="18.0" />
                     </font>
                 </Text>
                 <Button fx:id="buttonAceptar" layoutX="1146.0" layoutY="520.0" mnemonicParsing="false" onAction="#changeScene" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: #000000;" text="Aceptar" textFill="WHITE" />
                 <Button fx:id="buttonCancelar" layoutX="1051.0" layoutY="520.0" mnemonicParsing="false" onAction="#changeScene" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #C0C0C0; -fx-border-radius: 3px;" text="Cancelar" />
-                <ChoiceBox fx:id="cbOpciones" layoutX="873.0" layoutY="467.0" prefHeight="27.0" prefWidth="356.0" style="-fx-border-color: #C0C0C0; -fx-background-color: #FFFFFF; -fx-border-radius: 3px;" />
+                <ChoiceBox fx:id="cbOpciones" layoutX="399.0" layoutY="465.0" prefHeight="27.0" prefWidth="392.0" style="-fx-border-color: #C0C0C0; -fx-background-color: #FFFFFF; -fx-border-radius: 3px;" />
+            <Text fx:id="textError" fill="RED" layoutX="826.0" layoutY="538.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="224.13671875" />
             </children>
         </Pane>
         <Pane layoutY="668.0" prefHeight="55.0" prefWidth="1280.0" style="-fx-background-color: #e9c46a;">

@@ -19,14 +19,16 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
-
-
 import java.awt.*;
 import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
 import java.util.Collections;
+
+/**
+ * Esta clase es la Controladora de la Vista Login, comprueba que el login se realice correctamente.
+ */
 
 public class ControladorLogin {
 
@@ -43,14 +45,33 @@ public class ControladorLogin {
 
     UsuarioDAO miUsuario = new UsuarioDAO();
 
-
+    /**
+     * Controlador Vacio
+     */
     public ControladorLogin() {
     }
 
+    /**
+     * Método Initialize que se ejecuta después de cargar la vista.
+     */
+    @FXML
+    public void initialize(){
+    }
+
+    /**
+     * Método Setter del Main.
+     * @param miApp
+     */
     public void setMiApp(Main miApp) {
         this.miApp = miApp;
     }
 
+    /**
+     * Método que comprueba el logueo.
+     * @param e
+     * @throws SQLException
+     * @throws IOException
+     */
     @FXML
     public void comprobarAcceder(ActionEvent e) throws SQLException, IOException {
         lbErrorPasswUser.setWrapText(true);
@@ -60,11 +81,13 @@ public class ControladorLogin {
         } else {
             AbstractUsuario au = miUsuario.loguearse(tfPassw.getText(), tfUser.getText());
             if (au == null) {
+                //Cambiamos el borde a rojo si hemos introducido mal el usuario.
                 setRed(tfUser);
                 setRed(tfPassw);
                 lbErrorPasswUser.setText("Información incorrecta. Tu contraseña y/o información de registro están equivocadas.");
             } else {
                 miApp.setMiUsuario(au);
+                //Quitamos el borde rojo si hemos introducido correctamente.
                 removeRed(tfUser);
                 removeRed(tfPassw);
                 miApp.cambiarScene();
@@ -72,19 +95,30 @@ public class ControladorLogin {
         }
     }
 
+    /**
+     * Método que cambia el borde del textField a rojo.
+     * @param tf
+     */
     private void setRed(TextField tf) {
         ObservableList<String> styleClass = tf.getStyleClass();
-
         if(!styleClass.contains("tferror")) {
             styleClass.add("tferror");
         }
     }
 
+    /**
+     * Método que quita el color rojo al borde del textField.
+     * @param tf
+     */
     private void removeRed(TextField tf) {
         ObservableList<String> styleClass = tf.getStyleClass();
         styleClass.removeAll(Collections.singleton("tferror"));
     }
 
+    /**
+     * Método que permite que la ventana puede ser arrastrada.
+     * @param mouseEvent
+     */
     @FXML
     private void dragPanel(MouseEvent mouseEvent) {
         panel.setOnMouseDragged(dragEvent -> {
@@ -93,6 +127,10 @@ public class ControladorLogin {
         });
     }
 
+    /**
+     * Método que permite minimizar una ventana.
+     * @param e
+     */
     @FXML
     private void minimizePanel(MouseEvent e) {
         if (e.getSource() instanceof Pane) {
@@ -100,6 +138,10 @@ public class ControladorLogin {
         }
     }
 
+    /**
+     * Método que oscurece un panel para dar sensacion de estar seleccionado.
+     * @param e
+     */
     @FXML
     private void shadowPane(MouseEvent e) {
         if (e.getSource() instanceof Pane) {
@@ -108,6 +150,10 @@ public class ControladorLogin {
         }
     }
 
+    /**
+     * Método que devuelve el color normal al panel.
+     * @param e
+     */
     @FXML
     private void normalPane(MouseEvent e) {
         if (e.getSource() instanceof Pane) {
@@ -116,6 +162,10 @@ public class ControladorLogin {
         }
     }
 
+    /**
+     * Metodo que sirve para cerrar la aplicación.
+     * @param e
+     */
     @FXML
     private void closePanel(MouseEvent e) {
         if (e.getSource() instanceof Pane) {
@@ -123,6 +173,10 @@ public class ControladorLogin {
         }
     }
 
+    /**
+     * Método que redirige a las redes sociales.
+     * @param e
+     */
     @FXML
     private void socialNetworks(ActionEvent e) {
         if (e.getSource() instanceof Button) {

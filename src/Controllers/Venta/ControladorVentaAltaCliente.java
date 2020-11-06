@@ -1,101 +1,125 @@
 package Controllers.Venta;
 
-import Indice.Main;
+import Controllers.AbstractControlador;
+import DAO.ClientesDAO;
 import Models.AbstractUsuario;
+import Models.Cliente;
+import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
-public class ControladorVentaAltaCliente {
+/**
+ * Esta clase es la Controladora de la Vista AltaCliente, permite dar de alta a un nuevo cliente si no existe ya uno
+ * con el mismo DNI.
+ */
+
+public class ControladorVentaAltaCliente extends AbstractControlador {
 
     @FXML
-    Button buttonCancelar;
+    Pane panel;
     @FXML
-    Button buttonAceptar;
+    Text textError;
+    @FXML
+    TextField tfNombre;
+    @FXML
+    TextField tfApellidos;
+    @FXML
+    TextField tfDNI;
+    @FXML
+    TextField tfDireccion;
+    @FXML
+    TextField tfEmail;
+    @FXML
+    TextField tfTelefono;
+    @FXML
+    DatePicker dpFechaNacimiento;
     @FXML
     ChoiceBox cbSexo;
     @FXML
     ChoiceBox cbOpciones;
     @FXML
-    Pane panel;
+    Button buttonCancelar;
+    @FXML
+    Button buttonAceptar;
 
-    private Main miApp;
-
-    AbstractUsuario miUsuario;
-
+    /**
+     * Controlador Vacio
+     */
     public ControladorVentaAltaCliente() {
     }
 
-    public void changeScene(ActionEvent e) throws IOException {
+    /**
+     * Método Initialize que se ejecuta después de cargar la vista.
+     */
+    @FXML
+    public void initialize(){
+        cargarDesplegables();
+    }
+
+    /**
+     * Método que sirve para cambiar de una venta a otra dependiendo que boton se ha elegido.
+     * @param e
+     * @throws IOException
+     * @throws SQLException
+     */
+    public void changeScene(ActionEvent e) throws IOException, SQLException {
         String ruta = "";
         if(e.getSource().equals(buttonCancelar)) {
-            ruta = "/View/Venta.fxml";
+            ruta = "/View/Venta/Venta.fxml";
 
         } else if (e.getSource().equals(buttonAceptar)){
-            ruta = "/View/Venta.fxml";
+            HashMap<String,String> cliente = new HashMap<>();
+            cliente.put("Nombre", tfNombre.getText());
+            cliente.put("Apellidos", tfApellidos.getText());
+            cliente.put("DNI", tfDNI.getText());
+            cliente.put("Fecha", dpFechaNacimiento.getValue().toString());
+            cliente.put("Direccion", tfDireccion.getText());
+            cliente.put("Sexo", cbSexo.getSelectionModel().getSelectedItem().toString());
+            cliente.put("Email", tfEmail.getText());
+            cliente.put("Telefono", tfTelefono.getText());
+            cliente.put("Opciones", cbOpciones.getSelectionModel().getSelectedItem().toString());
+
+            Cliente c = new Cliente(cliente);
+            ClientesDAO cdao = new ClientesDAO();
+            cdao.darAltaCliente(c, textError);
+
+            ruta = "/View/Venta/BusquedaListadoClientes.fxml";
         }
-        FXMLLoader pane = new FXMLLoader(getClass().getResource(ruta));
-        miApp.getPrimaryStage().setScene(new Scene(pane.load(), 1280, 720));
+        if(!textError.getText().equals("El DNI que has introducido ya existe.") || e.getSource().equals(buttonCancelar)) {
+            FXMLLoader pane = new FXMLLoader(getClass().getResource(ruta));
+            miApp.getPrimaryStage().setScene(new Scene(pane.load(), 1280, 720));
 
-        ControladorVenta co = pane.getController();
-        co.setMiApp(miApp);
-    }
-
-    @FXML
-    private void dragPanel(MouseEvent mouseEvent) {
-        panel.setOnMouseDragged(dragEvent -> {
-            miApp.getPrimaryStage().setX(dragEvent.getScreenX() - mouseEvent.getSceneX());
-            miApp.getPrimaryStage().setY(dragEvent.getScreenY() - mouseEvent.getSceneY());
-        });
-    }
-
-    @FXML
-    private void shadowPane(MouseEvent e) {
-        if (e.getSource() instanceof Pane) {
-            Pane panel = (Pane) e.getSource();
-            panel.setBackground(new Background(new BackgroundFill(Color.web("#ac914f"), CornerRadii.EMPTY, Insets.EMPTY)));
-        }
-    }
-
-    @FXML
-    private void normalPane(MouseEvent e) {
-        if (e.getSource() instanceof Pane) {
-            Pane panel = (Pane) e.getSource();
-            panel.setBackground(new Background(new BackgroundFill(Color.web("#e9c46a"), CornerRadii.EMPTY, Insets.EMPTY)));
+            AbstractControlador co = pane.getController();
+            co.setMiApp(miApp);
         }
     }
 
+    /**
+     * Método que rellena los desplegables ChoiceBox.
+     */
     public void cargarDesplegables(){
         ArrayList<String> generos = new ArrayList<>();
-        generos.add("Hombre");
-        generos.add("Mujer");
+        generos.add("hombre");
+        generos.add("mujer");
         ObservableList<String> list = FXCollections.observableArrayList(generos);
         cbSexo.setItems(list);
 
         ArrayList<String> aviso = new ArrayList<>();
-        aviso.add("Email");
-        aviso.add("SMS");
+        aviso.add("correo");
+        aviso.add("sms");
         ObservableList<String> list2 = FXCollections.observableArrayList(aviso);
         cbOpciones.setItems(list2);
     }
-
-    public void setMiApp(Main miApp) {
-        this.miApp = miApp;
-    }
-
 }

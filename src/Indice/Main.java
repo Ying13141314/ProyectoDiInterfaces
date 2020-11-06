@@ -1,14 +1,12 @@
 package Indice;
 
+import Controllers.AbstractControlador;
 import Controllers.Jefe.ControladorJefe;
 import Controllers.Indice.ControladorLogin;
 import Controllers.Mecanico.ControladorMecanico;
-import Controllers.Venta.ControladorVenta;
 
 import Models.AbstractUsuario;
 import javafx.application.Application;
-
-
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -20,7 +18,7 @@ import java.io.IOException;
 public class Main extends Application {
 
     private Stage primaryStage;
-    private AbstractUsuario miUsuario;
+    public static AbstractUsuario miUsuario;
 
     @Override
     public void start(Stage primaryStage) {
@@ -33,7 +31,7 @@ public class Main extends Application {
     private void iniciarLogin(){
         try {
             //Cargar toda la FXML y más.
-            FXMLLoader logueader = new FXMLLoader(getClass().getResource("/View/Login.fxml"));
+            FXMLLoader logueader = new FXMLLoader(getClass().getResource("/View/Indice/Login.fxml"));
             primaryStage.setTitle("Yicar");
             primaryStage.setScene(new Scene(logueader.load(), 1280, 720));
             primaryStage.getScene().getStylesheets().add(getClass().getResource("/View/Resources/styleMain.css").toExternalForm());
@@ -55,9 +53,9 @@ public class Main extends Application {
         String ruta="";
 
         if(miUsuario.getTipo().equals(AbstractUsuario.VENTA)){
-            ruta="/View/Venta.fxml";
+            ruta= "/View/Venta/Venta.fxml";
         }else if (miUsuario.getTipo().equals(AbstractUsuario.MECANICO)){
-            ruta="/View/Mecanico.fxml";
+            ruta= "/View/Mecanico/Mecanico.fxml";
         }else{
             ruta="/View/Jefe.fxml";
         }
@@ -65,10 +63,10 @@ public class Main extends Application {
         FXMLLoader pane = new FXMLLoader(getClass().getResource(ruta));
         primaryStage.setScene(new Scene(pane.load(), 1280, 720));
 
-        if(ruta.equals("/View/Venta.fxml")) {
-            ControladorVenta co = pane.getController();
+        if(ruta.equals("/View/Venta/Venta.fxml")) {
+            AbstractControlador co = pane.getController();
             co.setMiApp(this);
-        } else if(ruta.equals("/View/Mecanico.fxml")){
+        } else if(ruta.equals("/View/Mecanico/Mecanico.fxml")){
             ControladorMecanico co = pane.getController();
             //co.setMiApp(this);
         } else{

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane fx:id="FichaCliente" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Venta.ControladorBusquedaListadoCliente">
+    <children>
+        <Pane prefHeight="95.0" prefWidth="1280.0">
+            <children>
+                <Pane fx:id="closePane" onMouseClicked="#closePane" prefHeight="95.0" prefWidth="70.0" style="-fx-background-color: #e9c46a;">
+                    <children>
+                        <ImageView fitHeight="40.0" fitWidth="35.0" layoutX="18.0" layoutY="28.0">
+                            <image>
+                                <Image url="@../Resources/menuBar.png" />
+                            </image>
+                        </ImageView>
+                    </children></Pane>
+                <Pane layoutX="70.0" prefHeight="95.0" prefWidth="200.0" style="-fx-background-color: #f4a261;">
+                    <children>
+                        <ImageView fitHeight="55.0" fitWidth="85.0" layoutX="60.0" layoutY="20.0">
+                            <image>
+                                <Image url="@../Resources/logo2.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </Pane>
+                <Pane fx:id="panelBuscarCliente" layoutX="270.0" onMouseClicked="#panelSuperior" onMouseEntered="#shadowPane" onMouseExited="#normalPane" prefHeight="95.0" prefWidth="200.0" style="-fx-background-color: #e9c46a;">
+                    <children>
+                        <Text fill="WHITE" layoutX="40.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Buscar Cliente">
+                            <font>
+                                <Font name="Arial Bold" size="18.0" />
+                            </font>
+                        </Text>
+                    </children></Pane>
+                <Pane fx:id="panelPropuestaVenta" layoutX="470.0" onMouseClicked="#panelSuperior" onMouseEntered="#shadowPane" onMouseExited="#normalPane" prefHeight="95.0" prefWidth="200.0" style="-fx-background-color: #e9c46a;">
+                    <children>
+                        <Text fill="WHITE" layoutX="57.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Propuesta">
+                            <font>
+                                <Font name="Arial Bold" size="18.0" />
+                            </font>
+                        </Text>
+                    </children></Pane>
+                <Pane layoutX="670.0" prefHeight="95.0" prefWidth="200.0" style="-fx-background-color: #e9c46a;" />
+                <Pane fx:id="panelVerVehiculo" layoutX="680.0" onMouseClicked="#panelSuperior" onMouseEntered="#shadowPane" onMouseExited="#normalPane" prefHeight="95.0" prefWidth="200.0" style="-fx-background-color: #e9c46a;">
+                    <children>
+                        <Text fill="WHITE" layoutX="48.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ver vehículo">
+                            <font>
+                                <Font name="Arial Bold" size="18.0" />
+                            </font>
+                        </Text>
+                    </children></Pane>
+                <Pane fx:id="panelVehiculoVenta" layoutX="880.0" onMouseClicked="#panelSuperior" onMouseEntered="#shadowPane" onMouseExited="#normalPane" prefHeight="95.0" prefWidth="200.0" style="-fx-background-color: #e9c46a;">
+                    <children>
+                        <Text fill="WHITE" layoutX="25.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vehículo en venta">
+                            <font>
+                                <Font name="Arial Bold" size="18.0" />
+                            </font>
+                        </Text>
+                    </children></Pane>
+                <Pane fx:id="panelAltaCliente" layoutX="1080.0" onMouseClicked="#panelSuperior" onMouseEntered="#shadowPane" onMouseExited="#normalPane" prefHeight="95.0" prefWidth="200.0" style="-fx-background-color: #e9c46a;">
+                    <children>
+                        <Text fill="WHITE" layoutX="52.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alta cliente">
+                            <font>
+                                <Font name="Arial Bold" size="18.0" />
+                            </font>
+                        </Text>
+                    </children></Pane>
+            </children>
+        </Pane>
+        <Pane layoutY="95.0" prefHeight="573.0" prefWidth="1280.0">
+            <children>
+                <ImageView fitHeight="16.0" fitWidth="1327.0" layoutX="-7.0" layoutY="57.0">
+                    <image>
+                        <Image url="@../Resources/barra.png" />
+                    </image>
+                </ImageView>
+                <Text fx:id="textBienvenido1" layoutX="70.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Buscar Cliente">
+                    <font>
+                        <Font name="Arial Bold" size="20.0" />
+                    </font>
+                </Text>
+                <Text fx:id="textBienvenido11" layoutX="70.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:">
+                    <font>
+                        <Font name="Arial Bold" size="18.0" />
+                    </font>
+                </Text>
+                <TextField fx:id="tfNombre" layoutX="177.0" layoutY="119.0" prefHeight="25.0" prefWidth="170.0" />
+                <Text fx:id="textBienvenido111" layoutX="495.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DNI:">
+                    <font>
+                        <Font name="Arial Bold" size="18.0" />
+                    </font>
+                </Text>
+                <TextField fx:id="tfDNI" layoutX="584.0" layoutY="119.0" prefHeight="25.0" prefWidth="170.0" />
+                <Text fx:id="textBienvenido11111" layoutX="887.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellido:">
+                    <font>
+                        <Font name="Arial Bold" size="18.0" />
+                    </font>
+                </Text>
+                <TextField fx:id="tfApellido" layoutX="1009.0" layoutY="117.0" prefHeight="25.0" prefWidth="180.0" />
+                <ImageView fitHeight="16.0" fitWidth="1327.0" layoutX="-7.0" layoutY="225.0">
+                    <image>
+                        <Image url="@../Resources/barra.png" />
+                    </image>
+                </ImageView>
+                <Text fx:id="textBienvenido12" layoutX="70.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos de Cliente">
+                    <font>
+                        <Font name="Arial Bold" size="20.0" />
+                    </font>
+                </Text>
+                <Button fx:id="buttonCancelar" layoutX="1108.0" layoutY="533.0" mnemonicParsing="false" onAction="#changeScene" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #C0C0C0; -fx-border-radius: 3px;" text="Cancelar" />
+            <TableView fx:id="clienteTableView" layoutX="70.0" layoutY="254.0" prefHeight="256.0" prefWidth="1123.0">
+              <columns>
+                <TableColumn fx:id="campoNombre" prefWidth="159.20001220703125" text="Nombre" />
+                <TableColumn fx:id="campoApellido" minWidth="0.0" prefWidth="282.40000915527344" text="Apellido" />
+                  <TableColumn fx:id="campoDNI" prefWidth="156.00006103515625" text="DNI" />
+                  <TableColumn fx:id="campoTelefono" prefWidth="181.60003662109375" text="Teléfono" />
+                  <TableColumn fx:id="campoSexo" prefWidth="113.5999755859375" text="Sexo" />
+                  <TableColumn fx:id="campoCorreo" prefWidth="226.199951171875" text="Correo" />
+              </columns>
+            </TableView>
+            </children>
+        </Pane>
+        <Pane layoutY="668.0" prefHeight="55.0" prefWidth="1280.0" style="-fx-background-color: #e9c46a;">
+            <children>
+                <Text fill="WHITE" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Copyright © 2020 Yicar Inc. Todos los derechos reservados." textAlignment="CENTER" wrappingWidth="1280.0">
+                    <font>
+                        <Font name="Arial Bold" size="14.0" />
+                    </font>
+                </Text>
+            </children>
+        </Pane>
+        <Pane fx:id="panel" onMousePressed="#dragPanel" prefHeight="16.0" prefWidth="1280.0" />
+    </children>
+</AnchorPane>

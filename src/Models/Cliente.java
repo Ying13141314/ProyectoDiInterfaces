@@ -5,6 +5,7 @@ import javafx.beans.property.StringProperty;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 
 public class Cliente {
 
@@ -21,6 +22,31 @@ public class Cliente {
         correo = new SimpleStringProperty(rs.getString("correo"));
         telefono = new SimpleStringProperty(rs.getString("telefono"));
         tipoComunicacion = new SimpleStringProperty(rs.getString("tipoComunicacion"));
+    }
+
+    public Cliente(HashMap<String,String> cliente) throws SQLException {
+        nombre = new SimpleStringProperty(cliente.get("Nombre"));
+        apellido = new SimpleStringProperty(cliente.get("Apellidos"));
+        dni = new SimpleStringProperty(cliente.get("DNI"));
+        //.toLocalDate sale en formato español
+        fechaNac = new SimpleStringProperty(cliente.get("Fecha"));
+        direccion = new SimpleStringProperty(cliente.get("Direccion"));
+        sexo = new SimpleStringProperty(cliente.get("Sexo"));
+        correo = new SimpleStringProperty(cliente.get("Email"));
+        telefono = new SimpleStringProperty(cliente.get("Telefono"));
+        tipoComunicacion = new SimpleStringProperty(cliente.get("Opciones"));
+    }
+
+    public Cliente(StringProperty nombre, StringProperty apellido, StringProperty dni, StringProperty fechaNac, StringProperty direccion, StringProperty sexo, StringProperty correo, StringProperty telefono, StringProperty tipoComunicacion) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.dni = dni;
+        this.fechaNac = fechaNac;
+        this.direccion = direccion;
+        this.sexo = sexo;
+        this.correo = correo;
+        this.telefono = telefono;
+        this.tipoComunicacion = tipoComunicacion;
     }
 
     public String getNombre() {

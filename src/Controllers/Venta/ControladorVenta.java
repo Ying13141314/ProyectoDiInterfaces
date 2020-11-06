@@ -1,81 +1,72 @@
 package Controllers.Venta;
 
-import Controllers.Venta.ControladorVentaAltaCliente;
+import Controllers.AbstractControlador;
 import Indice.Main;
 import Models.AbstractUsuario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
-import javafx.scene.layout.CornerRadii;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
-public class ControladorVenta {
+/**
+ * Esta clase es la Controladora de la Vista Venta, muestra la interfaz principal del usuario de tipo venta, en la cual
+ * se puede navegar a las diferentes opciones de tipo venta.
+ */
+
+public class ControladorVenta extends AbstractControlador {
 
     @FXML
-    Button buttonVehiculoConcesionario;
+    private Text textUsuario;
     @FXML
-    Button buttonFichaCliente;
+    private Button buttonFichaCliente;
     @FXML
-    Button buttonRegistrarCliente;
-    @FXML
-    Button buttonPropuestaVenta;
-    @FXML
-    Pane panel;
+    private Button buttonRegistrarCliente;
 
-    private Main miApp;
-
-    AbstractUsuario miUsuario;
-
+    /**
+     * Controlador Vacio
+     */
     public ControladorVenta() {
     }
 
+    /**
+     * Método Initialize que se ejecuta después de cargar la vista.
+     */
+    @FXML
+    public void initialize(){
+        textUsuario.setText(Main.miUsuario.getNombre());
+    }
+
+    /**
+     * Método que sirve para cambiar de una venta a otra dependiendo que boton se ha elegido.
+     * @param e
+     * @throws IOException
+     * @throws SQLException
+     */
     public void changeScene(ActionEvent e) throws IOException {
         String ruta = "";
         if (e.getSource().equals(buttonRegistrarCliente)) {
-            ruta = "/View/VentaAltaCliente.fxml";
+            ruta = "/View/Venta/VentaAltaCliente.fxml";
+
+        }else if (e.getSource().equals(buttonFichaCliente)){
+            ruta = "/View/Venta/BusquedaListadoClientes.fxml";
         }
         FXMLLoader pane = new FXMLLoader(getClass().getResource(ruta));
         miApp.getPrimaryStage().setScene(new Scene(pane.load(), 1280, 720));
 
-        ControladorVentaAltaCliente co = pane.getController();
-        co.setMiApp(miApp);
-        co.cargarDesplegables();
-    }
+        if (e.getSource().equals(buttonRegistrarCliente)) {
+            ControladorVentaAltaCliente co = pane.getController();
+            co.setMiApp(miApp);
 
-    @FXML
-    private void shadowPane(MouseEvent e) {
-        if (e.getSource() instanceof Pane) {
-            Pane panel = (Pane) e.getSource();
-            panel.setBackground(new Background(new BackgroundFill(Color.web("#ac914f"), CornerRadii.EMPTY, Insets.EMPTY)));
+        }else if (e.getSource().equals(buttonFichaCliente)){
+            AbstractControlador co = pane.getController();
+            co.setMiApp(miApp);
         }
-    }
-
-    @FXML
-    private void normalPane(MouseEvent e) {
-        if (e.getSource() instanceof Pane) {
-            Pane panel = (Pane) e.getSource();
-            panel.setBackground(new Background(new BackgroundFill(Color.web("#e9c46a"), CornerRadii.EMPTY, Insets.EMPTY)));
-        }
-    }
-
-    @FXML
-    private void dragPanel(MouseEvent mouseEvent) {
-        panel.setOnMouseDragged(dragEvent -> {
-            miApp.getPrimaryStage().setX(dragEvent.getScreenX() - mouseEvent.getSceneX());
-            miApp.getPrimaryStage().setY(dragEvent.getScreenY() - mouseEvent.getSceneY());
-        });
-    }
-
-    public void setMiApp(Main miApp) {
-        this.miApp = miApp;
     }
 }

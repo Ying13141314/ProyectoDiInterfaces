@@ -6,8 +6,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class UsuarioDAO extends AbstractDAO {
-
-
     /**
      * Método para que devuelve un usuario para poder loguarse.
      * @param pass
@@ -16,8 +14,6 @@ public class UsuarioDAO extends AbstractDAO {
      * @throws SQLException
      */
     public AbstractUsuario loguearse(String pass,String user) throws SQLException {
-
-        super.conectar();
 
         AbstractUsuario miUsuario = null;
 
@@ -37,7 +33,6 @@ public class UsuarioDAO extends AbstractDAO {
             miUsuario = AbstractUsuario.tipo(rs);
         }
 
-        super.cerrarBasesDatos();
         return miUsuario;
     }
 
