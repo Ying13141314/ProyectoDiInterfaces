@@ -55,8 +55,7 @@ public class ControladorLogin {
      * Método Initialize que se ejecuta después de cargar la vista.
      */
     @FXML
-    public void initialize(){
-    }
+    public void initialize(){    }
 
     /**
      * Método Setter del Main.
