@@ -9,7 +9,7 @@ public class AbstractDAO {
     protected static final String CONTROLADOR = "com.mysql.jdbc.Driver";
     protected static final String URL = "jdbc:mysql://localhost:3306/yicar?allowPublicKeyRetrieval=true&useSSL=false";
     protected static final String USUARIO = "root";
-    protected static final String CLAVE = "123456";
+    protected static final String CLAVE = "123asd";
     protected static Connection conexion;
 
     public AbstractDAO(){
