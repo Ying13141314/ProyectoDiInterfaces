@@ -79,7 +79,7 @@
                         <Image url="@../Resources/fondo_aplicacion.jpg" />
                     </image>
                 </ImageView>
-                <Button fx:id="buttonVehiculoConcesionario" layoutX="75.0" layoutY="226.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="400.0" style="-fx-background-color: #7A7A7A;" text="VER VEHICULO CONCESIONARIO" textFill="WHITE">
+                <Button fx:id="buttonVehiculoConcesionario" layoutX="75.0" layoutY="226.0" mnemonicParsing="false" onAction="#changeScene" prefHeight="74.0" prefWidth="400.0" style="-fx-background-color: #7A7A7A;" text="VER VEHICULO CONCESIONARIO" textFill="WHITE">
                     <font>
                         <Font name="Arial Bold" size="16.0" />
                     </font>
@@ -94,7 +94,7 @@
                         <Font name="Arial Bold" size="16.0" />
                     </font>
                 </Button>
-                <Button fx:id="buttonPropuestaVenta" layoutX="805.0" layoutY="398.0" mnemonicParsing="false" prefHeight="74.0" prefWidth="400.0" style="-fx-background-color: #7A7A7A;" text="PROPUESTA DE VENTA" textFill="WHITE">
+                <Button fx:id="buttonPropuestaVenta" layoutX="805.0" layoutY="398.0" mnemonicParsing="false" onAction="#changeScene" prefHeight="74.0" prefWidth="400.0" style="-fx-background-color: #7A7A7A;" text="PROPUESTA DE VENTA" textFill="WHITE">
                     <font>
                         <Font name="Arial Bold" size="16.0" />
                     </font>

@@ -94,7 +94,7 @@ public abstract class AbstractControlador {
     protected void panelSuperior(MouseEvent e) throws IOException {
         String ruta = "";
         if (e.getSource().equals(panelVehiculoVenta)) {
-            ruta = "/View/Venta/VentaVehiculo.fxml";
+            ruta = "/View/Venta/VentaAltaVehiculo.fxml";
 
         } else if (e.getSource().equals(panelAltaCliente)){
             ruta = "/View/Venta/VentaAltaCliente.fxml";

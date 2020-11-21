@@ -2,14 +2,11 @@ package Controllers.Venta;
 
 import Controllers.AbstractControlador;
 import Indice.Main;
-import Models.AbstractUsuario;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -25,9 +22,7 @@ public class ControladorVenta extends AbstractControlador {
     @FXML
     private Text textUsuario;
     @FXML
-    private Button buttonFichaCliente;
-    @FXML
-    private Button buttonRegistrarCliente;
+    private Button buttonFichaCliente,buttonVehiculoConcesionario,buttonRegistrarCliente,buttonPropuestaVenta;
 
     /**
      * Controlador Vacio
@@ -54,8 +49,12 @@ public class ControladorVenta extends AbstractControlador {
         if (e.getSource().equals(buttonRegistrarCliente)) {
             ruta = "/View/Venta/VentaAltaCliente.fxml";
 
-        }else if (e.getSource().equals(buttonFichaCliente)){
+        } else if (e.getSource().equals(buttonFichaCliente)){
             ruta = "/View/Venta/BusquedaListadoClientes.fxml";
+        } else if (e.getSource().equals(buttonVehiculoConcesionario)){
+            ruta = "/View/Venta/BusquedaListadoVehiculo.fxml";
+        } else if (e.getSource().equals(buttonPropuestaVenta)){
+            ruta = "/View/Venta/VentaPropuesta.fxml";
         }
         FXMLLoader pane = new FXMLLoader(getClass().getResource(ruta));
         miApp.getPrimaryStage().setScene(new Scene(pane.load(), 1280, 720));
@@ -64,8 +63,14 @@ public class ControladorVenta extends AbstractControlador {
             ControladorVentaAltaCliente co = pane.getController();
             co.setMiApp(miApp);
 
-        }else if (e.getSource().equals(buttonFichaCliente)){
+        } else if (e.getSource().equals(buttonFichaCliente)){
             AbstractControlador co = pane.getController();
+            co.setMiApp(miApp);
+        } else if (e.getSource().equals(buttonVehiculoConcesionario)){
+            AbstractControlador co = pane.getController();
+            co.setMiApp(miApp);
+        } else if (e.getSource().equals(buttonPropuestaVenta)){
+            ControladorVentaPropuesta co = pane.getController();
             co.setMiApp(miApp);
         }
     }

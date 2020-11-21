@@ -18,24 +18,24 @@ import java.io.IOException;
 public class Main extends Application {
 
     private Stage primaryStage;
-    public static AbstractUsuario miUsuario;
+            public static AbstractUsuario miUsuario;
 
-    @Override
-    public void start(Stage primaryStage) {
-        this.primaryStage=primaryStage;
-        primaryStage.initStyle(StageStyle.UNDECORATED);
-        primaryStage.setResizable(false);
-        iniciarLogin();
-    }
+            @Override
+            public void start(Stage primaryStage) {
+                this.primaryStage=primaryStage;
+                primaryStage.initStyle(StageStyle.UNDECORATED);
+                primaryStage.setResizable(false);
+                iniciarLogin();
+            }
 
-    private void iniciarLogin(){
-        try {
-            //Cargar toda la FXML y más.
-            FXMLLoader logueader = new FXMLLoader(getClass().getResource("/View/Indice/Login.fxml"));
-            primaryStage.setTitle("Yicar");
-            primaryStage.setScene(new Scene(logueader.load(), 1280, 720));
-            primaryStage.getScene().getStylesheets().add(getClass().getResource("/View/Resources/styleMain.css").toExternalForm());
-            //Cargar el controlador
+            private void iniciarLogin(){
+                try {
+                    //Cargar toda la FXML y más.
+                    FXMLLoader logueader = new FXMLLoader(getClass().getResource("/View/Indice/Login.fxml"));
+                    primaryStage.setTitle("Yicar");
+                    primaryStage.setScene(new Scene(logueader.load(), 1280, 720));
+                    primaryStage.getScene().getStylesheets().add(getClass().getResource("/View/Resources/styleMain.css").toExternalForm());
+                    //Cargar el controlador
             ControladorLogin co = logueader.getController();
             //Para dar parametro al constructor.
             co.setMiApp(this);

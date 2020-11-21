@@ -15,14 +15,20 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
 import java.awt.*;
 import java.io.IOException;
+import java.math.BigInteger;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.SQLException;
 import java.util.Collections;
 
@@ -55,7 +61,8 @@ public class ControladorLogin {
      * Método Initialize que se ejecuta después de cargar la vista.
      */
     @FXML
-    public void initialize(){    }
+    public void initialize(){
+    }
 
     /**
      * Método Setter del Main.
@@ -72,13 +79,19 @@ public class ControladorLogin {
      * @throws IOException
      */
     @FXML
-    public void comprobarAcceder(ActionEvent e) throws SQLException, IOException {
+    public void comprobarAcceder(ActionEvent e) throws SQLException, IOException, NoSuchAlgorithmException {
+        comprobarAcceder();
+    }
+
+    public void comprobarAcceder() throws SQLException, IOException, NoSuchAlgorithmException {
         lbErrorPasswUser.setWrapText(true);
         if (tfUser.getText().equals("") || tfPassw.getText().equals("")) {
             lbErrorPasswUser.setText("Los campos no pueden estar vacios.");
 
         } else {
-            AbstractUsuario au = miUsuario.loguearse(tfPassw.getText(), tfUser.getText());
+            String hashpass = toHexString(getSHA(tfPassw.getText()));
+
+            AbstractUsuario au = miUsuario.loguearse(hashpass, tfUser.getText());
             if (au == null) {
                 //Cambiamos el borde a rojo si hemos introducido mal el usuario.
                 setRed(tfUser);
@@ -172,6 +185,13 @@ public class ControladorLogin {
         }
     }
 
+    @FXML
+    private void enterAcceder(KeyEvent e) throws NoSuchAlgorithmException, SQLException, IOException {
+        if(e.getCode().equals(KeyCode.ENTER)){
+            comprobarAcceder();
+        }
+    }
+
     /**
      * Método que redirige a las redes sociales.
      * @param e
@@ -201,4 +221,40 @@ public class ControladorLogin {
             }
         }
     }
+
+    /**
+     * Función getSHA, nos devuelve la contraseña con el SHA implementado.
+     * @param pass
+     * @return MessageDigest
+     * @throws NoSuchAlgorithmException
+     */
+    public static byte[] getSHA(String pass) throws NoSuchAlgorithmException {
+        //Creamos el objeto que nos deja instanciar el SHA-256
+        MessageDigest md = MessageDigest.getInstance("SHA-256");
+
+        // Devuelve un Array Byte asimilado para calcular el mensaje  de la contraseña.
+        return md.digest(pass.getBytes(StandardCharsets.UTF_8));
+    }
+
+    /**
+     * Función toHexString nos permite convertir de una contraseña a una Hasheada.
+     * @param hash
+     * @return
+     */
+    public static String toHexString(byte[] hash) {
+        // Convierte un Array de Byte en un BigInteger
+        BigInteger number = new BigInteger(1, hash);
+
+        // Convierte el mensaje asimilado en un valor hexadecimal
+        StringBuilder hexString = new StringBuilder(number.toString(16));
+
+        //Si la longitud de la cadena es menor a 32 rellenamos con ceros a la derecha hasta llegar a 32
+        while (hexString.length() < 32)
+        {
+            hexString.insert(0, '0');
+        }
+
+        return hexString.toString();
+    }
+
 }

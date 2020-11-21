@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -11,7 +11,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="VentaAltaCliente" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Venta.ControladorVentaAltaCliente">
+<AnchorPane fx:id="FichaCliente" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controllers.Venta.ControladorBusquedaListadoVehiculo">
     <children>
         <Pane prefHeight="95.0" prefWidth="1280.0">
             <children>
@@ -77,88 +77,61 @@
         </Pane>
         <Pane layoutY="95.0" prefHeight="573.0" prefWidth="1280.0">
             <children>
-                <ImageView fitHeight="16.0" fitWidth="1327.0" layoutX="-23.0" layoutY="115.0">
+                <ImageView fitHeight="16.0" fitWidth="1327.0" layoutX="-7.0" layoutY="57.0">
                     <image>
                         <Image url="@../Resources/barra.png" />
                     </image>
                 </ImageView>
-                <Text fx:id="textBienvenido" layoutX="69.0" layoutY="51.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Introduce los datos para poder tramitar el alta como cliente.">
-                    <font>
-                        <Font name="Arial" size="18.0" />
-                    </font>
-                </Text>
-                <Text fx:id="textBienvenido1" layoutX="70.0" layoutY="109.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos personales">
+                <Text fx:id="textBienvenido1" layoutX="70.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Buscar Cliente">
                     <font>
                         <Font name="Arial Bold" size="20.0" />
                     </font>
                 </Text>
-                <Text fx:id="textBienvenido11" layoutX="50.0" layoutY="190.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nombre:">
+                <Text fx:id="marca" layoutX="70.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Marca:">
                     <font>
                         <Font name="Arial Bold" size="18.0" />
                     </font>
                 </Text>
-                <TextField fx:id="tfNombre" layoutX="150.0" layoutY="170.0" prefHeight="25.0" prefWidth="170.0" />
-                <Text fx:id="textBienvenido111" layoutX="50.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DNI:">
+                <TextField fx:id="tfMarca" layoutX="148.0" layoutY="119.0" prefHeight="25.0" prefWidth="153.0" />
+                <Text fx:id="modelo" layoutX="355.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modelo:">
                     <font>
                         <Font name="Arial Bold" size="18.0" />
                     </font>
                 </Text>
-                <TextField fx:id="tfDNI" layoutX="150.0" layoutY="220.0" prefHeight="25.0" prefWidth="170.0" />
-                <Text fx:id="textBienvenido1111" layoutX="864.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sexo:">
+                <TextField fx:id="tfModelo" layoutX="458.0" layoutY="119.0" prefHeight="25.0" prefWidth="126.0" />
+                <Text fx:id="tipo" layoutX="635.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo:">
                     <font>
                         <Font name="Arial Bold" size="18.0" />
                     </font>
                 </Text>
-                <ChoiceBox fx:id="cbSexo" layoutX="1059.0" layoutY="169.0" prefHeight="25.0" prefWidth="170.0" style="-fx-border-color: #C0C0C0; -fx-background-color: #FFFFFF; -fx-border-radius: 3px;" />
-                <Text fx:id="textBienvenido11111" layoutX="390.0" layoutY="189.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Apellidos:">
-                    <font>
-                        <Font name="Arial Bold" size="18.0" />
-                    </font>
-                </Text>
-                <TextField fx:id="tfApellidos" layoutX="621.0" layoutY="170.0" prefHeight="25.0" prefWidth="170.0" />
-                <Text fx:id="textBienvenido111111" layoutX="390.0" layoutY="240.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Fecha de Nacimiento:">
-                    <font>
-                        <Font name="Arial Bold" size="18.0" />
-                    </font>
-                </Text>
-                <DatePicker fx:id="dpFechaNacimiento" layoutX="621.0" layoutY="221.0" prefHeight="25.0" prefWidth="170.0" />
-                <Text fx:id="textBienvenido11111111" layoutX="867.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dirección:">
-                    <font>
-                        <Font name="Arial Bold" size="18.0" />
-                    </font>
-                </Text>
-                <TextField fx:id="tfDireccion" layoutX="1059.0" layoutY="221.0" prefHeight="25.0" prefWidth="170.0" />
-                <ImageView fitHeight="16.0" fitWidth="1327.0" layoutX="-17.0" layoutY="367.0">
+                <TextField fx:id="tfTipo" layoutX="715.0" layoutY="119.0" prefHeight="25.0" prefWidth="140.0" />
+                <ImageView fitHeight="16.0" fitWidth="1327.0" layoutX="-7.0" layoutY="225.0">
                     <image>
                         <Image url="@../Resources/barra.png" />
                     </image>
                 </ImageView>
-                <Text fx:id="textBienvenido12" layoutX="70.0" layoutY="361.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos de contacto">
+                <Text fx:id="textBienvenido12" layoutX="70.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Datos de Cliente">
                     <font>
                         <Font name="Arial Bold" size="20.0" />
                     </font>
                 </Text>
-                <Text fx:id="textBienvenido112" layoutX="51.0" layoutY="438.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:">
+                <Button fx:id="buttonCancelar" layoutX="1108.0" layoutY="533.0" mnemonicParsing="false" onAction="#changeScene" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #C0C0C0; -fx-border-radius: 3px;" text="Cancelar" />
+                <TableView fx:id="vehiculoTableView" layoutX="70.0" layoutY="254.0" prefHeight="290.0" prefWidth="1123.0">
+                    <columns>
+                        <TableColumn fx:id="campoMarca" prefWidth="159.20001220703125" text="Marca" />
+                        <TableColumn fx:id="campoModelo" minWidth="0.0" prefWidth="282.40000915527344" text="Modelo" />
+                        <TableColumn fx:id="campoTipoVehiculo" prefWidth="156.00006103515625" text="TipoVehículo" />
+                        <TableColumn fx:id="campoConcesionario" prefWidth="181.60003662109375" text="Concesionario" />
+                        <TableColumn fx:id="campoPrecio" prefWidth="113.5999755859375" text="Precio" />
+                        <TableColumn fx:id="campoFechaEntrada" prefWidth="226.199951171875" text="Fecha de Entrada" />
+                    </columns>
+                </TableView>
+                <Text fx:id="concesionario" layoutX="904.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Concesionario:">
                     <font>
                         <Font name="Arial Bold" size="18.0" />
                     </font>
                 </Text>
-                <TextField fx:id="tfEmail" layoutX="151.0" layoutY="418.0" prefHeight="25.0" prefWidth="170.0" />
-                <Text fx:id="textBienvenido1112" layoutX="51.0" layoutY="488.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Teléfono:">
-                    <font>
-                        <Font name="Arial Bold" size="18.0" />
-                    </font>
-                </Text>
-                <TextField fx:id="tfTelefono" layoutX="151.0" layoutY="468.0" prefHeight="25.0" prefWidth="170.0" />
-                <Text fx:id="textBienvenido11111112" layoutX="399.0" layoutY="436.0" strokeType="OUTSIDE" strokeWidth="0.0" text="¿Cómo quiere que contactemos con usted?" textAlignment="CENTER" wrappingWidth="392.0">
-                    <font>
-                        <Font name="Arial Bold" size="18.0" />
-                    </font>
-                </Text>
-                <Button fx:id="buttonAceptar" layoutX="1146.0" layoutY="520.0" mnemonicParsing="false" onAction="#changeScene" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: #000000;" text="Aceptar" textFill="WHITE" />
-                <Button fx:id="buttonCancelar" layoutX="1051.0" layoutY="520.0" mnemonicParsing="false" onAction="#changeScene" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #C0C0C0; -fx-border-radius: 3px;" text="Cancelar" />
-                <ChoiceBox fx:id="cbOpciones" layoutX="399.0" layoutY="465.0" prefHeight="27.0" prefWidth="392.0" style="-fx-border-color: #C0C0C0; -fx-background-color: #FFFFFF; -fx-border-radius: 3px;" />
-                <Text fx:id="textError" fill="RED" layoutX="826.0" layoutY="538.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="224.13671875" />
+                <TextField fx:id="tfConcesionario" layoutX="1062.0" layoutY="119.0" prefHeight="25.0" prefWidth="131.0" />
             </children>
         </Pane>
         <Pane layoutY="668.0" prefHeight="55.0" prefWidth="1280.0" style="-fx-background-color: #e9c46a;">
