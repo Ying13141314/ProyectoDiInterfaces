@@ -48,7 +48,6 @@ public class ControladorVenta extends AbstractControlador {
         String ruta = "";
         if (e.getSource().equals(buttonRegistrarCliente)) {
             ruta = "/View/Venta/VentaAltaCliente.fxml";
-
         } else if (e.getSource().equals(buttonFichaCliente)){
             ruta = "/View/Venta/BusquedaListadoClientes.fxml";
         } else if (e.getSource().equals(buttonVehiculoConcesionario)){

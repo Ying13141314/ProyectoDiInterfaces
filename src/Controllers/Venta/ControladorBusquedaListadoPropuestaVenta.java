@@ -108,7 +108,7 @@ import java.sql.SQLException;
                 public void handle(MouseEvent event) {
                     //si detecta más de un click me lleva a otra ventana.
                     if (event.getClickCount() > 1) {
-                        FXMLLoader pane = new FXMLLoader(getClass().getResource("/View/Venta/FichaCliente.fxml"));
+                        FXMLLoader pane = new FXMLLoader(getClass().getResource("/View/Venta/FichaPropuestaVenta.fxml"));
                         try {
                             miApp.getPrimaryStage().setScene(new Scene(pane.load(), 1280, 720));
                             ControladorFichaPropuestaVenta co = pane.getController();

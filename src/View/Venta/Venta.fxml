@@ -37,7 +37,7 @@
                             </font>
                         </Text>
                     </children></Pane>
-                <Pane fx:id="panelPropuestas" layoutX="470.0" onMouseClicked="#panelSuperior" onMouseEntered="#shadowPane" onMouseExited="#normalPane" prefHeight="95.0" prefWidth="200.0" style="-fx-background-color: #e9c46a;">
+                <Pane fx:id="panelPropuestaVenta" layoutX="470.0" onMouseClicked="#panelSuperior" onMouseEntered="#shadowPane" onMouseExited="#normalPane" prefHeight="95.0" prefWidth="200.0" style="-fx-background-color: #e9c46a;">
                     <children>
                         <Text fx:id="Propuestas" fill="WHITE" layoutX="51.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Propuestas">
                             <font>
@@ -46,7 +46,7 @@
                         </Text>
                     </children></Pane>
                 <Pane layoutX="670.0" prefHeight="95.0" prefWidth="200.0" style="-fx-background-color: #e9c46a;" />
-                <Pane fx:id="panelVerFichaVehiculo" layoutX="680.0" onMouseClicked="#panelSuperior" onMouseEntered="#shadowPane" onMouseExited="#normalPane" prefHeight="95.0" prefWidth="200.0" style="-fx-background-color: #e9c46a;">
+                <Pane fx:id="panelVerVehiculo" layoutX="680.0" onMouseClicked="#panelSuperior" onMouseEntered="#shadowPane" onMouseExited="#normalPane" prefHeight="95.0" prefWidth="200.0" style="-fx-background-color: #e9c46a;">
                     <children>
                         <Text fx:id="VerFichaVehiculo" fill="WHITE" layoutX="46.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ver vehículo">
                             <font>

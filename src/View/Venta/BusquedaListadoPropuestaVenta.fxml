@@ -116,7 +116,7 @@
                     </font>
                 </Text>
                 <Button fx:id="buttonCancelar" layoutX="1108.0" layoutY="533.0" mnemonicParsing="false" onAction="#changeScene" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #C0C0C0; -fx-border-radius: 3px;" text="Cancelar" />
-                <TableView fx:id="clienteTableView" layoutX="70.0" layoutY="254.0" prefHeight="256.0" prefWidth="1123.0">
+                <TableView fx:id="propuestaTableView" layoutX="70.0" layoutY="254.0" prefHeight="256.0" prefWidth="1123.0">
                     <columns>
                         <TableColumn fx:id="campoNombreCliente" prefWidth="159.20001220703125" text="Nombre Cliente" />
                         <TableColumn fx:id="campoPrimerApellido" minWidth="0.0" prefWidth="282.40000915527344" text="Primer Apellido" />

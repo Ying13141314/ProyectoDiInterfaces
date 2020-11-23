@@ -42,7 +42,7 @@
                     </children></Pane>
                 <Pane fx:id="panelPropuestaVenta" layoutX="470.0" onMouseClicked="#panelSuperior" onMouseEntered="#shadowPane" onMouseExited="#normalPane" prefHeight="95.0" prefWidth="200.0" style="-fx-background-color: #e9c46a;">
                     <children>
-                        <Text fill="WHITE" layoutX="57.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Propuesta">
+                        <Text fill="WHITE" layoutX="50.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Propuestas">
                             <font>
                                 <Font name="Arial Bold" size="18.0" />
                             </font>
