@@ -60,7 +60,7 @@
                     </children></Pane>
                 <Pane fx:id="panelVehiculoVenta" layoutX="880.0" onMouseClicked="#panelSuperior" onMouseEntered="#shadowPane" onMouseExited="#normalPane" prefHeight="95.0" prefWidth="200.0" style="-fx-background-color: #e9c46a;">
                     <children>
-                        <Text fx:id="panel" fill="WHITE" layoutX="25.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vehículo en venta">
+                        <Text fx:id="panelito" fill="WHITE" layoutX="25.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vehículo en venta">
                             <font>
                                 <Font name="Arial Bold" size="18.0" />
                             </font>
@@ -177,6 +177,6 @@
                 </Text>
             </children>
         </Pane>
-        <Pane fx:id="panel" onMousePressed="#dragPanel" prefHeight="16.0" prefWidth="1280.0" />
+        <Pane fx:id="panel2" onMousePressed="#dragPanel" prefHeight="16.0" prefWidth="1280.0" />
     </children>
 </AnchorPane>
