@@ -31,7 +31,7 @@
                 </Pane>
                 <Pane fx:id="panelBuscarCliente" layoutX="270.0" onMouseClicked="#panelSuperior" onMouseEntered="#shadowPane" onMouseExited="#normalPane" prefHeight="95.0" prefWidth="200.0" style="-fx-background-color: #e9c46a;">
                     <children>
-                        <Text fx:id="panelBuscaCliente" fill="WHITE" layoutX="40.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Buscar Cliente">
+                        <Text fx:id="BuscaCliente" fill="WHITE" layoutX="40.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Buscar Cliente">
                             <font>
                                 <Font name="Arial Bold" size="18.0" />
                             </font>
@@ -39,16 +39,16 @@
                     </children></Pane>
                 <Pane fx:id="panelPropuestas" layoutX="470.0" onMouseClicked="#panelSuperior" onMouseEntered="#shadowPane" onMouseExited="#normalPane" prefHeight="95.0" prefWidth="200.0" style="-fx-background-color: #e9c46a;">
                     <children>
-                        <Text fx:id="panelPropuestas" fill="WHITE" layoutX="51.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Propuestas">
+                        <Text fx:id="Propuestas" fill="WHITE" layoutX="51.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Propuestas">
                             <font>
                                 <Font name="Arial Bold" size="18.0" />
                             </font>
                         </Text>
                     </children></Pane>
                 <Pane layoutX="670.0" prefHeight="95.0" prefWidth="200.0" style="-fx-background-color: #e9c46a;" />
-                <Pane fx:id="panelVerVehiculo" layoutX="680.0" onMouseClicked="#panelSuperior" onMouseEntered="#shadowPane" onMouseExited="#normalPane" prefHeight="95.0" prefWidth="200.0" style="-fx-background-color: #e9c46a;">
+                <Pane fx:id="panelVerFichaVehiculo" layoutX="680.0" onMouseClicked="#panelSuperior" onMouseEntered="#shadowPane" onMouseExited="#normalPane" prefHeight="95.0" prefWidth="200.0" style="-fx-background-color: #e9c46a;">
                     <children>
-                        <Text fx:id="panelVerFichaVehiculo" fill="WHITE" layoutX="46.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ver vehículo">
+                        <Text fx:id="VerFichaVehiculo" fill="WHITE" layoutX="46.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ver vehículo">
                             <font>
                                 <Font name="Arial Bold" size="18.0" />
                             </font>
@@ -56,7 +56,7 @@
                     </children></Pane>
                 <Pane fx:id="panelVehiculoVenta" layoutX="880.0" onMouseClicked="#panelSuperior" onMouseEntered="#shadowPane" onMouseExited="#normalPane" prefHeight="95.0" prefWidth="200.0" style="-fx-background-color: #e9c46a;">
                     <children>
-                        <Text fx:id="panelListadoVehiculo" fill="WHITE" layoutX="25.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vehículo en venta">
+                        <Text fx:id="Vehiculo" fill="WHITE" layoutX="25.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vehículo en venta">
                             <font>
                                 <Font name="Arial Bold" size="18.0" />
                             </font>
@@ -64,7 +64,7 @@
                     </children></Pane>
                 <Pane fx:id="panelAltaCliente" layoutX="1080.0" onMouseClicked="#panelSuperior" onMouseEntered="#shadowPane" onMouseExited="#normalPane" prefHeight="95.0" prefWidth="200.0" style="-fx-background-color: #e9c46a;">
                     <children>
-                        <Text fx:id="panelAltaCliente" fill="WHITE" layoutX="52.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alta cliente">
+                        <Text fx:id="AltaCliente" fill="WHITE" layoutX="52.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Alta cliente">
                             <font>
                                 <Font name="Arial Bold" size="18.0" />
                             </font>

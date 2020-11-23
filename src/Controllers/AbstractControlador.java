@@ -26,13 +26,14 @@ public abstract class AbstractControlador {
     @FXML
     protected Pane panel;
     @FXML
-    private Pane panelVerVehiculo;
+    private Pane panelBuscaCliente;
     @FXML
-    private Pane panelVehiculoVenta;
+    private Pane panelPropuestas;
     @FXML
-    private Pane panelAltaCliente;
+    private Pane panelVerFichaVehiculo;
     @FXML
-    private Pane panelBuscarCliente;
+    private Pane panelListadoVehiculo,panelAltaCliente;
+
 
     public void setMiApp(Main miapp){
         this.miApp = miapp;
@@ -93,16 +94,18 @@ public abstract class AbstractControlador {
     @FXML
     protected void panelSuperior(MouseEvent e) throws IOException {
         String ruta = "";
-        if (e.getSource().equals(panelVehiculoVenta)) {
+        if (e.getSource().equals(panelListadoVehiculo)) {
             ruta = "/View/Venta/VentaAltaVehiculo.fxml";
 
         } else if (e.getSource().equals(panelAltaCliente)){
             ruta = "/View/Venta/VentaAltaCliente.fxml";
 
-        } else if (e.getSource().equals(panelVerVehiculo)){
+        } else if (e.getSource().equals(panelVerFichaVehiculo)){
             ruta = "/View/Venta/FichaVehiculo.fxml";
-        } else if (e.getSource().equals(panelBuscarCliente)){
+        } else if (e.getSource().equals(panelBuscaCliente)){
             ruta = "/View/Venta/BusquedaListadoClientes.fxml";
+        }else if (e.getSource().equals(panelPropuestas)){
+            ruta = "/View/Venta/BusquedaListadoPropuestaVenta.fxml";
         }
         FXMLLoader pane = new FXMLLoader(getClass().getResource(ruta));
         miApp.getPrimaryStage().setScene(new Scene(pane.load(), 1280, 720));
