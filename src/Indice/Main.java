@@ -53,11 +53,11 @@ public class Main extends Application {
         String ruta="";
 
         if(miUsuario.getTipo().equals(AbstractUsuario.VENTA)){
-            ruta= "/View/Venta/Venta.fxml";
+            ruta = "/View/Venta/Venta.fxml";
         }else if (miUsuario.getTipo().equals(AbstractUsuario.MECANICO)){
-            ruta= "/View/Mecanico/Mecanico.fxml";
+            ruta = "/View/Mecanico/Mecanico.fxml";
         }else{
-            ruta="/View/Jefe.fxml";
+            ruta ="/View/Jefe.fxml";
         }
 
         FXMLLoader pane = new FXMLLoader(getClass().getResource(ruta));
