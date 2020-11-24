@@ -86,6 +86,7 @@ public class ControladorFichaVehiculo extends AbstractControlador {
         vehiculo.put("fechaSalida", dpFechaSalida.getValue().toString());
         vehiculo.put("numeroBastidor", tfBastidor.getText());
 
+
     }
 
     /**
@@ -93,14 +94,10 @@ public class ControladorFichaVehiculo extends AbstractControlador {
      * @throws SQLException
      */
     private void actualizarDatos() {
-        try {
-            obtenerDatosVehiculo();
-            Vehiculo miVehiculo = new Vehiculo(vehiculo);
-            VehiculoDAO miVehiculoDao = new VehiculoDAO();
-            miVehiculoDao.actualizarDatos(miVehiculo);
-        } catch(SQLException e){
-
-        }
+        obtenerDatosVehiculo();
+        Vehiculo miVehiculo = new Vehiculo(vehiculo);
+        VehiculoDAO miVehiculoDao = new VehiculoDAO();
+        miVehiculoDao.actualizarDatos(miVehiculo);
     }
 
     /**
