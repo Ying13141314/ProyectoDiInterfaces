@@ -1,10 +1,9 @@
 package Indice;
 
-import Controllers.AbstractControlador;
+import Controllers.AbstractControladorVenta;
 import Controllers.Jefe.ControladorJefe;
 import Controllers.Indice.ControladorLogin;
-import Controllers.Mecanico.ControladorMecanico;
-
+import Controllers.Mecanico.AbstractControladorMecanico;
 import Models.AbstractUsuario;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -64,11 +63,11 @@ public class Main extends Application {
         primaryStage.setScene(new Scene(pane.load(), 1280, 720));
 
         if(ruta.equals("/View/Venta/Venta.fxml")) {
-            AbstractControlador co = pane.getController();
+            AbstractControladorVenta co = pane.getController();
             co.setMiApp(this);
         } else if(ruta.equals("/View/Mecanico/Mecanico.fxml")){
-            ControladorMecanico co = pane.getController();
-            //co.setMiApp(this);
+            AbstractControladorMecanico co = pane.getController();
+            co.setMiApp(this);
         } else{
             ControladorJefe co = pane.getController();
             //co.setMiApp(this);

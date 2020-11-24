@@ -1,6 +1,6 @@
 package Controllers.Venta;
 
-import Controllers.AbstractControlador;
+import Controllers.AbstractControladorVenta;
 import DAO.VentaPropuestaDAO;
 import Models.PropuestaVenta;
 import javafx.collections.ObservableList;
@@ -25,7 +25,7 @@ import java.sql.SQLException;
      * poder modificarlos.
      */
 
-    public class ControladorBusquedaListadoPropuestaVenta extends AbstractControlador {
+    public class ControladorBusquedaListadoPropuestaVenta extends AbstractControladorVenta {
 
         //Estado
         @FXML

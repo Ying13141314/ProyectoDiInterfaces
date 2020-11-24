@@ -1,6 +1,7 @@
 package Controllers.Venta;
 
-import Controllers.AbstractControlador;
+
+import Controllers.AbstractControladorVenta;
 import DAO.VehiculoDAO;
 
 import Models.Vehiculo;
@@ -21,7 +22,7 @@ import java.util.HashMap;
  * de la Vista ListadoVehiculo (Se realiza en el Sprint 3).
  */
 
-public class ControladorFichaVehiculo extends AbstractControlador {
+public class ControladorFichaVehiculo extends AbstractControladorVenta {
 
     @FXML
     private Button buttonCancelar,buttonBorrar,buttonActualizar;

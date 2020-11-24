@@ -1,6 +1,6 @@
 package Controllers.Venta;
 
-import Controllers.AbstractControlador;
+import Controllers.AbstractControladorVenta;
 import DAO.ClientesDAO;
 import DAO.VehiculoDAO;
 import DAO.VentaPropuestaDAO;
@@ -27,7 +27,7 @@ import java.util.HashMap;
  * con el mismo DNI.
  */
 
-public class ControladorVentaPropuesta extends AbstractControlador {
+public class ControladorVentaPropuesta extends AbstractControladorVenta {
 
     @FXML
     Pane panel;
@@ -102,7 +102,7 @@ public class ControladorVentaPropuesta extends AbstractControlador {
             FXMLLoader pane = new FXMLLoader(getClass().getResource(ruta));
             miApp.getPrimaryStage().setScene(new Scene(pane.load(), 1280, 720));
 
-            AbstractControlador co = pane.getController();
+            AbstractControladorVenta co = pane.getController();
             co.setMiApp(miApp);
         }
     }

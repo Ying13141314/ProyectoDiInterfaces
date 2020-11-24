@@ -1,11 +1,8 @@
 package Controllers.Venta;
 
-import Controllers.AbstractControlador;
-import DAO.ClientesDAO;
+import Controllers.AbstractControladorVenta;
 import DAO.VehiculoDAO;
-import Models.Cliente;
 import Models.Vehiculo;
-import javafx.beans.property.FloatProperty;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
@@ -22,7 +19,7 @@ import javafx.scene.input.MouseEvent;
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class ControladorBusquedaListadoVehiculo extends AbstractControlador {
+public class ControladorBusquedaListadoVehiculo extends AbstractControladorVenta {
     //Estado
     @FXML
     private Button buttonCancelar;

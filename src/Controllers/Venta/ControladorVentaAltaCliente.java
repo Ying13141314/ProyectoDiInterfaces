@@ -1,10 +1,8 @@
 package Controllers.Venta;
 
-import Controllers.AbstractControlador;
+import Controllers.AbstractControladorVenta;
 import DAO.ClientesDAO;
-import Models.AbstractUsuario;
 import Models.Cliente;
-import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -25,7 +23,7 @@ import java.util.HashMap;
  * con el mismo DNI.
  */
 
-public class ControladorVentaAltaCliente extends AbstractControlador {
+public class ControladorVentaAltaCliente extends AbstractControladorVenta {
 
     @FXML
     Pane panel;
@@ -101,7 +99,7 @@ public class ControladorVentaAltaCliente extends AbstractControlador {
             FXMLLoader pane = new FXMLLoader(getClass().getResource(ruta));
             miApp.getPrimaryStage().setScene(new Scene(pane.load(), 1280, 720));
 
-            AbstractControlador co = pane.getController();
+            AbstractControladorVenta co = pane.getController();
             co.setMiApp(miApp);
         }
     }
