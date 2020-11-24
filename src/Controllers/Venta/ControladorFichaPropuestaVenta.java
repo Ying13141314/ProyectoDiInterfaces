@@ -1,6 +1,6 @@
 package Controllers.Venta;
 
-import Controllers.AbstractControlador;
+import Controllers.AbstractControladorVenta;
 import DAO.VentaPropuestaDAO;
 import Models.PropuestaVenta;
 import javafx.collections.FXCollections;
@@ -17,7 +17,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-public class ControladorFichaPropuestaVenta extends AbstractControlador {
+public class ControladorFichaPropuestaVenta extends AbstractControladorVenta {
 
     @FXML
     private Button buttonCancelar,buttonActualizar,buttonBorrar;
@@ -76,7 +76,7 @@ public class ControladorFichaPropuestaVenta extends AbstractControlador {
         FXMLLoader pane = new FXMLLoader(getClass().getResource(ruta));
         miApp.getPrimaryStage().setScene(new Scene(pane.load(), 1280, 720));
 
-        AbstractControlador co = pane.getController();
+        AbstractControladorVenta co = pane.getController();
         co.setMiApp(miApp);
 
     }

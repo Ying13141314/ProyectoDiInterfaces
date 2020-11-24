@@ -1,6 +1,6 @@
 package Controllers.Venta;
 
-import Controllers.AbstractControlador;
+import Controllers.AbstractControladorVenta;
 import DAO.ClientesDAO;
 import Models.Cliente;
 import javafx.collections.FXCollections;
@@ -21,7 +21,7 @@ import java.util.HashMap;
 /**
  *  Esta clase es la Controladora del ficha Cliente, comprueba todos los procesos de ficha Cliente.
  */
-public class ControladorFichaCliente extends AbstractControlador {
+public class ControladorFichaCliente extends AbstractControladorVenta {
 
     @FXML
     private Button buttonCancelar,buttonActualizar,buttonBorrar;
@@ -88,7 +88,7 @@ public class ControladorFichaCliente extends AbstractControlador {
         FXMLLoader pane = new FXMLLoader(getClass().getResource(ruta));
         miApp.getPrimaryStage().setScene(new Scene(pane.load(), 1280, 720));
 
-        AbstractControlador co = pane.getController();
+        AbstractControladorVenta co = pane.getController();
         co.setMiApp(miApp);
 
     }

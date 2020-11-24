@@ -1,6 +1,6 @@
 package Controllers.Venta;
 
-import Controllers.AbstractControlador;
+import Controllers.AbstractControladorVenta;
 import Indice.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,7 +17,7 @@ import java.sql.SQLException;
  * se puede navegar a las diferentes opciones de tipo venta.
  */
 
-public class ControladorVenta extends AbstractControlador {
+public class ControladorVenta extends AbstractControladorVenta {
 
     @FXML
     private Text textUsuario;
@@ -59,17 +59,17 @@ public class ControladorVenta extends AbstractControlador {
         miApp.getPrimaryStage().setScene(new Scene(pane.load(), 1280, 720));
 
         if (e.getSource().equals(buttonRegistrarCliente)) {
-            ControladorVentaAltaCliente co = pane.getController();
+            AbstractControladorVenta co = pane.getController();
             co.setMiApp(miApp);
 
         } else if (e.getSource().equals(buttonFichaCliente)){
-            AbstractControlador co = pane.getController();
+            AbstractControladorVenta co = pane.getController();
             co.setMiApp(miApp);
         } else if (e.getSource().equals(buttonVehiculoConcesionario)){
-            AbstractControlador co = pane.getController();
+            AbstractControladorVenta co = pane.getController();
             co.setMiApp(miApp);
         } else if (e.getSource().equals(buttonPropuestaVenta)){
-            AbstractControlador co = pane.getController();
+            AbstractControladorVenta co = pane.getController();
             co.setMiApp(miApp);
         }
     }

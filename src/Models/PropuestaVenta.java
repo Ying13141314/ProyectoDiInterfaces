@@ -21,7 +21,6 @@ public class PropuestaVenta {
         propuesta = new SimpleStringProperty(rs.getString("propuesta"));
         estado = new SimpleStringProperty(rs.getString("estado"));
         fechaLimiteAcep = new SimpleStringProperty(rs.getString("fechaLimiteAceptación"));
-
     }
 
     public PropuestaVenta(HashMap<String,Object> propuestaVenta) throws SQLException {

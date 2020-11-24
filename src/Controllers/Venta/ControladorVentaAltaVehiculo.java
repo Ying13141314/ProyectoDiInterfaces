@@ -1,7 +1,7 @@
 package Controllers.Venta;
 
-import Controllers.AbstractControlador;
 
+import Controllers.AbstractControladorVenta;
 import DAO.VehiculoDAO;
 
 import Models.Vehiculo;
@@ -25,7 +25,7 @@ import java.util.HashMap;
  * Esta clase es la Controladora de la Vista VentaVehiculo, permite dar de alta a un nuevo vehiculo.
  */
 
-public class ControladorVentaAltaVehiculo extends AbstractControlador {
+public class ControladorVentaAltaVehiculo extends AbstractControladorVenta {
 
     @FXML
     private TextField tfNumeroBastidor,tfMarca,tfModelo,tfPrecio,tfNumeroPuertas,tfNumeroRuedas, tfConcesionario;

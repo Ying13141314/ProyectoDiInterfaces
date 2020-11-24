@@ -1,13 +1,11 @@
-package Controllers;
+package Controllers.Mecanico;
 
 import Indice.Main;
 import javafx.application.Platform;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
@@ -16,23 +14,14 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 
 import java.io.IOException;
-import java.util.Collections;
 
-/**
- * Controlador padre de Venta.
- */
-public abstract class AbstractControlador {
+public class AbstractControladorMecanico {
     protected Main miApp;
     @FXML
     protected Pane panel;
+
     @FXML
-    private Pane panelBuscarCliente;
-    @FXML
-    private Pane panelPropuestaVenta;
-    @FXML
-    private Pane panelVerVehiculo;
-    @FXML
-    private Pane panelVehiculoVenta,panelAltaCliente;
+    private Pane panelConsultarCliente,panelTrabajoAsignado;
 
 
     public void setMiApp(Main miapp){
@@ -94,24 +83,17 @@ public abstract class AbstractControlador {
     @FXML
     protected void panelSuperior(MouseEvent e) throws IOException {
         String ruta = "";
-        if (e.getSource().equals(panelVehiculoVenta)) {
+        if (e.getSource().equals(panelConsultarCliente)) {
             ruta = "/View/Venta/VentaAltaVehiculo.fxml";
 
-        } else if (e.getSource().equals(panelAltaCliente)){
-            ruta = "/View/Venta/VentaAltaCliente.fxml";
+        } else if (e.getSource().equals(panelTrabajoAsignado)){
+            ruta = "/View/Mecanico/TrabajoDelDia.fxml";
 
-        } else if (e.getSource().equals(panelVerVehiculo)){
-            ruta = "/View/Venta/FichaVehiculo.fxml";
-        } else if (e.getSource().equals(panelBuscarCliente)){
-            ruta = "/View/Venta/BusquedaListadoClientes.fxml";
-        }else if (e.getSource().equals(panelPropuestaVenta)){
-            ruta = "/View/Venta/BusquedaListadoPropuestaVenta.fxml";
         }
         FXMLLoader pane = new FXMLLoader(getClass().getResource(ruta));
         miApp.getPrimaryStage().setScene(new Scene(pane.load(), 1280, 720));
 
-        AbstractControlador co = pane.getController();
+        AbstractControladorMecanico co = pane.getController();
         co.setMiApp(miApp);
     }
-
 }

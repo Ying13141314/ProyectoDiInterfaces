@@ -1,7 +1,7 @@
 package Controllers.Venta;
 
-import Controllers.AbstractControlador;
 
+import Controllers.AbstractControladorVenta;
 import DAO.ClientesDAO;
 import Models.Cliente;
 
@@ -26,7 +26,7 @@ import java.sql.SQLException;
  * poder modificarlos.
  */
 
-public class ControladorBusquedaListadoCliente extends AbstractControlador {
+public class ControladorBusquedaListadoCliente extends AbstractControladorVenta {
 
     //Estado
     @FXML

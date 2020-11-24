@@ -1,9 +1,7 @@
 package Controllers.Venta;
 
-import Controllers.AbstractControlador;
-import DAO.ClientesDAO;
+import Controllers.AbstractControladorVenta;
 import DAO.VehiculoDAO;
-import Models.Cliente;
 import Models.Vehiculo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -21,7 +19,7 @@ import java.util.HashMap;
  * Esta clase es la Controladora de la Vista VentaVehiculo, permite dar de alta a un nuevo vehiculo.
  */
 
-public class ControladorVentaVehiculo extends AbstractControlador {
+public class ControladorVentaVehiculo extends AbstractControladorVenta {
 
     @FXML
     TextField tfMarca;
