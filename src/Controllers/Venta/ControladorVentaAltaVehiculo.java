@@ -28,11 +28,11 @@ import java.util.HashMap;
 public class ControladorVentaAltaVehiculo extends AbstractControlador {
 
     @FXML
-    private TextField tfBastidor,tfMarca,tfModelo,tfPrecio,tfNPuertas,tfNRuedas;
+    private TextField tfNumeroBastidor,tfMarca,tfModelo,tfPrecio,tfNumeroPuertas,tfNumeroRuedas, tfConcesionario;
     @FXML
     private DatePicker dpFechaEntrada,dpFechaSalida;
     @FXML
-    private ChoiceBox cbTipoVehiculo;
+    private ChoiceBox cbTipoVehiculo, cbEstado;
     @FXML
     Button buttonCancelar;
     @FXML
@@ -58,13 +58,15 @@ public class ControladorVentaAltaVehiculo extends AbstractControlador {
             HashMap<String,Object> vehiculo = new HashMap<>();
             vehiculo.put("Marca", tfMarca.getText());
             vehiculo.put("Modelo", tfModelo.getText());
-            vehiculo.put("NumeroPuertas", tfNPuertas.getText());
             vehiculo.put("Precio", tfPrecio.getText());
+            vehiculo.put("NumeroPuertas", tfNumeroPuertas.getText());
+            vehiculo.put("NumeroRuedas",tfNumeroRuedas.getText());
+            vehiculo.put("NumeroBastidor",tfNumeroBastidor.getText());
+            vehiculo.put("TipoVehiculo", cbTipoVehiculo.getSelectionModel().getSelectedItem().toString());
+            vehiculo.put("IdConcesionario",tfConcesionario.getText());
             vehiculo.put("FechaEntrada", dpFechaEntrada.getValue().toString());
-            vehiculo.put("NumeroRuedas",tfNRuedas.getText());
-            vehiculo.put("FechaSalida",dpFechaSalida.getValue().toString());
-            vehiculo.put("NumeroBastidor",tfBastidor.getText());
-            vehiculo.put("TipoVehiculo",cbTipoVehiculo.getValue());
+            vehiculo.put("Estado", cbEstado.getSelectionModel().getSelectedItem().toString());
+            vehiculo.put("FechaSalida", dpFechaSalida.getValue().toString());
 
 
             Vehiculo v = new Vehiculo(vehiculo);
@@ -85,10 +87,16 @@ public class ControladorVentaAltaVehiculo extends AbstractControlador {
      */
     public void cargarDesplegables(){
         ArrayList<String> tipoVehiculos = new ArrayList<>();
-        tipoVehiculos.add("Coche");
-        tipoVehiculos.add("Motocicleta");
-        tipoVehiculos.add("Ciclomotor");
+        tipoVehiculos.add("coches");
+        tipoVehiculos.add("motocicleta");
+        tipoVehiculos.add("ciclomotor");
         ObservableList<String> list = FXCollections.observableArrayList(tipoVehiculos);
         cbTipoVehiculo.setItems(list);
+
+        ArrayList<String> tipoEstado = new ArrayList<>();
+        tipoEstado.add("Vendido");
+        tipoEstado.add("En venta");
+        ObservableList<String> list2 = FXCollections.observableArrayList(tipoEstado);
+        cbEstado.setItems(list2);
     }
 }

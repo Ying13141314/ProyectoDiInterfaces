@@ -4,6 +4,7 @@ import Models.Cliente;
 import Models.PropuestaVenta;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 
 import java.sql.PreparedStatement;

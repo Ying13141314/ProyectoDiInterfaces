@@ -34,15 +34,19 @@ public class Vehiculo {
     public Vehiculo(HashMap<String,Object> vehiculo) throws SQLException {
         marca = new SimpleStringProperty((String) vehiculo.get("Marca"));
         modelo = new SimpleStringProperty((String) vehiculo.get("Modelo"));
-        numeroPuertas = new SimpleIntegerProperty(Integer.parseInt((String)vehiculo.get("NumeroPuertas")));
         precio = new SimpleFloatProperty(Float.parseFloat((String)vehiculo.get("Precio")));
+        if(vehiculo.get("Estado").equals("Vendido")){
+            vendido = new SimpleBooleanProperty(true);
+        } else {
+            vendido = new SimpleBooleanProperty(false);
+        }
+        numeroPuertas = new SimpleIntegerProperty(Integer.parseInt((String)vehiculo.get("NumeroPuertas")));
+        numeroRuedas = new SimpleIntegerProperty(Integer.parseInt((String)vehiculo.get("NumeroRuedas")));
+        numeroBastidor = new SimpleStringProperty((String) vehiculo.get("NumeroBastidor"));
+        tipoVehiculo = new SimpleStringProperty((String) vehiculo.get("TipoVehiculo"));
+        idConsecionario = new SimpleIntegerProperty(Integer.parseInt((String)vehiculo.get("IdConcesionario")));
         fechaEntrada = new SimpleStringProperty((String) vehiculo.get("FechaEntrada"));
-        vendido = new SimpleBooleanProperty(false);
-        numeroRuedas = new SimpleIntegerProperty((Integer) vehiculo.get("numeroRuedas"));
-        fechaSalida = new SimpleStringProperty((String) vehiculo.get("fechaSalida"));
-        numeroBastidor = new SimpleStringProperty((String) vehiculo.get("numeroBastidor"));
-        tipoVehiculo = new SimpleStringProperty((String) vehiculo.get("tipoVehiculo"));
-        idConsecionario = new SimpleIntegerProperty((Integer) vehiculo.get("idConcesionario"));
+        fechaSalida = new SimpleStringProperty((String) vehiculo.get("FechaSalida"));
     }
 
     // getter and setter

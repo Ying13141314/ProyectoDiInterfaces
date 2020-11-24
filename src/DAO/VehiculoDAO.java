@@ -17,7 +17,7 @@ public class VehiculoDAO extends AbstractDAO {
         super.conectar();
 
         //
-        String query = "INSERT INTO vehiculo (marca,modelo,numeroPuertas,precio,fechaEntrada,fechaSalida,numeroRuedas,numeroBastidor,tipoVehiculo,vendido) " + "VALUES (?,?,?,?,?,?,?,?,?,?)";
+        String query = "INSERT INTO vehiculo (marca,modelo,numeroPuertas,precio,fechaEntrada,fechaSalida,numeroRuedas,numeroBastidor,tipoVehiculo,vendido,idConcesionarios) " + "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
 
         if(!comprobarVehiculo(vehiculo.getNumeroBastidor())){
             PreparedStatement ps = conexion.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
@@ -26,11 +26,12 @@ public class VehiculoDAO extends AbstractDAO {
             ps.setInt(3, vehiculo.getNumeroPuertas());
             ps.setFloat(4, vehiculo.getPrecio());
             ps.setString(5, vehiculo.getFechaEntrada());
-            ps.setString(5, vehiculo.getFechaSalida());
-            ps.setInt(5, vehiculo.getNumeroRuedas());
-            ps.setString(5, vehiculo.getNumeroBastidor());
-            ps.setString(5, vehiculo.getTipoVehiculo());
-            ps.setBoolean(6, vehiculo.isVendido());
+            ps.setString(6, vehiculo.getFechaSalida());
+            ps.setInt(7, vehiculo.getNumeroRuedas());
+            ps.setString(8, vehiculo.getNumeroBastidor());
+            ps.setString(9, vehiculo.getTipoVehiculo());
+            ps.setBoolean(10, vehiculo.isVendido());
+            ps.setInt(11, vehiculo.getIdConsecionario());
             ps.executeUpdate();
         }
 

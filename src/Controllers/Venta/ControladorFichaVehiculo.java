@@ -26,7 +26,7 @@ public class ControladorFichaVehiculo extends AbstractControlador {
     @FXML
     private Button buttonCancelar,buttonBorrar,buttonActualizar;
     @FXML
-    private TextField tfBastidor,tfMarca,tfModelo,tfPrecio,tfNPuertas,tfNRuedas;
+    private TextField tfBastidor,tfMarca,tfModelo,tfPrecio,tfNumeroPuertas,tfNumeroRuedas;
     @FXML
     private DatePicker dpFechaEntrada,dpFechaSalida;
     @FXML
@@ -79,10 +79,10 @@ public class ControladorFichaVehiculo extends AbstractControlador {
         vehiculo = new HashMap<>();
         vehiculo.put("Marca", tfMarca.getText());
         vehiculo.put("Modelo", tfModelo.getText());
-        vehiculo.put("NumeroPuertas", tfNPuertas.getText());
+        vehiculo.put("NumeroPuertas", tfNumeroPuertas.getText());
         vehiculo.put("FechaEntrada", dpFechaEntrada.getValue().toString());
         vehiculo.put("Precio", tfPrecio.getText());
-        vehiculo.put("numeroRuedas", tfNRuedas.toString());
+        vehiculo.put("numeroRuedas", tfNumeroRuedas.toString());
         vehiculo.put("fechaSalida", dpFechaSalida.getValue().toString());
         vehiculo.put("numeroBastidor", tfBastidor.getText());
 
@@ -125,9 +125,9 @@ public class ControladorFichaVehiculo extends AbstractControlador {
         }else{
             tfBastidor.setText("no existe");
         }
-        tfNRuedas.setText(miVehiculo.getNumeroRuedas().toString());
+        tfNumeroRuedas.setText(miVehiculo.getNumeroRuedas().toString());
         tfPrecio.setText(miVehiculo.getPrecio().toString());
-        tfNPuertas.setText(miVehiculo.getNumeroPuertas().toString());
+        tfNumeroPuertas.setText(miVehiculo.getNumeroPuertas().toString());
         cbTipoVehiculo.setValue(miVehiculo.getTipoVehiculo());
         dpFechaSalida.setValue(LocalDate.parse(miVehiculo.getFechaSalida()));
         dpFechaEntrada.setValue(LocalDate.parse(miVehiculo.getFechaEntrada()));
