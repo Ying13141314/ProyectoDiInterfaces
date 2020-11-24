@@ -28,12 +28,12 @@ public class PropuestaVenta {
         nombreCliente = new SimpleStringProperty((String) propuestaVenta.get("nombreCliente"));
         primerApellido = new SimpleStringProperty((String) propuestaVenta.get("primerApellido"));
         segundoApellido = new SimpleStringProperty((String) propuestaVenta.get("segundoApellido"));
-        dni = new SimpleStringProperty((String) propuestaVenta.get("DNI"));
-        fechaNac = new SimpleStringProperty((String) propuestaVenta.get("FechaNac"));
-        direccion = new SimpleStringProperty((String) propuestaVenta.get("Direccion"));
+        dni = new SimpleStringProperty((String) propuestaVenta.get("dni"));
+        fechaNac = new SimpleStringProperty((String) propuestaVenta.get("fechaNac"));
+        direccion = new SimpleStringProperty((String) propuestaVenta.get("direccion"));
         propuesta = new SimpleStringProperty((String) propuestaVenta.get("propuesta"));
         estado = new SimpleStringProperty((String) propuestaVenta.get("estado"));
-        fechaLimiteAcep = new SimpleStringProperty((String) propuestaVenta.get("fechaLimiteAceptación"));
+        fechaLimiteAcep = new SimpleStringProperty((String) propuestaVenta.get("FechaLimite"));
 
     }
 

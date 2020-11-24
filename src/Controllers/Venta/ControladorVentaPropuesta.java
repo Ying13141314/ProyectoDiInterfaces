@@ -2,17 +2,18 @@ package Controllers.Venta;
 
 import Controllers.AbstractControlador;
 import DAO.ClientesDAO;
+import DAO.VehiculoDAO;
+import DAO.VentaPropuestaDAO;
 import Models.Cliente;
+import Models.PropuestaVenta;
+import Models.Vehiculo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 
@@ -35,15 +36,21 @@ public class ControladorVentaPropuesta extends AbstractControlador {
     @FXML
     TextField tfNombre;
     @FXML
-    TextField tfApellidos;
+    TextField tfPrimerApellido;
+    @FXML
+    TextField tfSegundoApellido;
     @FXML
     TextField tfDNI;
     @FXML
     TextField tfDireccion;
     @FXML
-    TextField tfEmail;
+    TextArea taPropuesta;
     @FXML
     DatePicker dpFechaNacimiento;
+    @FXML
+    DatePicker dpFechaLimite;
+    @FXML
+    ChoiceBox cbEstado;
     @FXML
     Button buttonCancelar;
     @FXML
@@ -59,7 +66,7 @@ public class ControladorVentaPropuesta extends AbstractControlador {
      * Método Initialize que se ejecuta después de cargar la vista.
      */
     @FXML
-    public void initialize(){}
+    public void initialize(){cargarDesplegables();}
 
     /**
      * Método que sirve para cambiar de una venta a otra dependiendo que boton se ha elegido.
@@ -73,15 +80,23 @@ public class ControladorVentaPropuesta extends AbstractControlador {
             ruta = "/View/Venta/Venta.fxml";
 
         } else if (e.getSource().equals(buttonAceptar)){
-            HashMap<String,String> cliente = new HashMap<>();
-            cliente.put("Nombre", tfNombre.getText());
-            cliente.put("Apellidos", tfApellidos.getText());
-            cliente.put("DNI", tfDNI.getText());
-            cliente.put("Fecha", dpFechaNacimiento.getValue().toString());
-            cliente.put("Direccion", tfDireccion.getText());
-            cliente.put("Email", tfEmail.getText());
+            HashMap<String,Object> propuesta = new HashMap<>();
+            propuesta.put("nombreCliente", tfNombre.getText());
+            propuesta.put("primerApellido", tfPrimerApellido.getText());
+            propuesta.put("segundoApellido", tfSegundoApellido.getText());
+            propuesta.put("dni", tfDNI.getText());
+            propuesta.put("estado", cbEstado.getAccessibleText());
+            propuesta.put("fechaNac", dpFechaNacimiento.getValue().toString());
+            propuesta.put("FechaLimite", dpFechaLimite.getValue().toString());
+            propuesta.put("direccion", tfDireccion.getText());
+            propuesta.put("propuesta", taPropuesta.getText());
+            propuesta.put("fechaLimiteAcep", dpFechaLimite.getValue().toString());
 
-            ruta = "/View/Venta/BusquedaListadoClientes.fxml";
+            PropuestaVenta p = new PropuestaVenta(propuesta);
+            VentaPropuestaDAO vpdao = new VentaPropuestaDAO();
+            vpdao.darAltaPropuesta(p,textError);
+
+            ruta = "/View/Venta/Venta.fxml";
         }
         if(!textError.getText().equals("El DNI que has introducido ya existe.") || e.getSource().equals(buttonCancelar)) {
             FXMLLoader pane = new FXMLLoader(getClass().getResource(ruta));
@@ -90,5 +105,13 @@ public class ControladorVentaPropuesta extends AbstractControlador {
             AbstractControlador co = pane.getController();
             co.setMiApp(miApp);
         }
+    }
+    public void cargarDesplegables(){
+        ArrayList<String> estado = new ArrayList<>();
+        estado.add("Aceptada");
+        estado.add("Rechazada");
+        estado.add("Pendiente");
+        ObservableList<String> list = FXCollections.observableArrayList(estado);
+        cbEstado.setItems(list);
     }
 }

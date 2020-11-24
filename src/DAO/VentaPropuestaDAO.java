@@ -35,7 +35,6 @@ public class VentaPropuestaDAO extends AbstractDAO{
                 pt.setString(8,miVenta.getEstado());
                 pt.setString(9,miVenta.getFechaLimiteAcep());
 
-
                 pt.executeUpdate();
                 System.out.println("Terminado");
             } else {

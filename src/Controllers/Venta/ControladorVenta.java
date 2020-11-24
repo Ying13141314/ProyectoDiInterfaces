@@ -53,7 +53,7 @@ public class ControladorVenta extends AbstractControlador {
         } else if (e.getSource().equals(buttonVehiculoConcesionario)){
             ruta = "/View/Venta/BusquedaListadoVehiculo.fxml";
         } else if (e.getSource().equals(buttonPropuestaVenta)){
-            ruta = "/View/Venta/VentaPropuesta.fxml";
+            ruta = "/View/Venta/FichaPropuestaVenta.fxml";
         }
         FXMLLoader pane = new FXMLLoader(getClass().getResource(ruta));
         miApp.getPrimaryStage().setScene(new Scene(pane.load(), 1280, 720));
