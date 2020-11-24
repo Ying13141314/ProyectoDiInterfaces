@@ -93,7 +93,7 @@ public class ControladorFichaVehiculo extends AbstractControlador {
      * Método que actualiza los datos del cliente si modificamos los campos.
      * @throws SQLException
      */
-    private void actualizarDatos() {
+    private void actualizarDatos() throws SQLException {
         obtenerDatosVehiculo();
         Vehiculo miVehiculo = new Vehiculo(vehiculo);
         VehiculoDAO miVehiculoDao = new VehiculoDAO();
