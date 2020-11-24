@@ -1,6 +1,6 @@
 package DAO;
 
-import Models.Cliente;
+
 import Models.PropuestaVenta;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -79,10 +79,10 @@ public class VentaPropuestaDAO extends AbstractDAO{
         //super.cerrarBasesDatos();
     }
 
-    public void borrarCliente(Cliente miCliente) throws SQLException {
+    public void borrarPropuesta(PropuestaVenta miVenta) throws SQLException {
         String sql = "delete from ventas where dni = ?";
         PreparedStatement ps = conexion.prepareStatement(sql);
-        ps.setString(1, miCliente.getDni());
+        ps.setString(1, miVenta.getDni());
         ps.executeUpdate();
     }
 
