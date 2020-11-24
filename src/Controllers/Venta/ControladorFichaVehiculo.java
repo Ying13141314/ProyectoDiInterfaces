@@ -86,18 +86,21 @@ public class ControladorFichaVehiculo extends AbstractControlador {
         vehiculo.put("fechaSalida", dpFechaSalida.getValue().toString());
         vehiculo.put("numeroBastidor", tfBastidor.getText());
 
-
     }
 
     /**
      * Método que actualiza los datos del cliente si modificamos los campos.
      * @throws SQLException
      */
-    private void actualizarDatos() throws SQLException {
-        obtenerDatosVehiculo();
-        Vehiculo miVehiculo = new Vehiculo(vehiculo);
-        VehiculoDAO miVehiculoDao = new VehiculoDAO();
-        miVehiculoDao.actualizarDatos(miVehiculo);
+    private void actualizarDatos() {
+        try {
+            obtenerDatosVehiculo();
+            Vehiculo miVehiculo = new Vehiculo(vehiculo);
+            VehiculoDAO miVehiculoDao = new VehiculoDAO();
+            miVehiculoDao.actualizarDatos(miVehiculo);
+        } catch(SQLException e){
+
+        }
     }
 
     /**

@@ -141,7 +141,7 @@
                </font>
             </Text>
             <TextField fx:id="tfPrecio" layoutX="150.0" layoutY="273.0" prefHeight="25.0" prefWidth="170.0" />
-            <Text fx:id="textBienvenido1111" layoutX="394.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero Ruedas: ">
+            <Text fx:id="textBienvenido1111" layoutX="382.0" layoutY="291.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Numero de Ruedas: ">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
