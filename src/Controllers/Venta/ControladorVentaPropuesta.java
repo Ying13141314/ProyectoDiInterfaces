@@ -81,7 +81,7 @@ public class ControladorVentaPropuesta extends AbstractControlador {
             cliente.put("Direccion", tfDireccion.getText());
             cliente.put("Email", tfEmail.getText());
 
-            ruta = "/View/Venta/BusquedaListadoClientes.fxml";
+            ruta = "/View/Venta/BusquedaListadoPropuestaVenta.fxml";
         }
         if(!textError.getText().equals("El DNI que has introducido ya existe.") || e.getSource().equals(buttonCancelar)) {
             FXMLLoader pane = new FXMLLoader(getClass().getResource(ruta));
