@@ -85,7 +85,7 @@ public class ControladorVentaPropuesta extends AbstractControlador {
             propuesta.put("primerApellido", tfPrimerApellido.getText());
             propuesta.put("segundoApellido", tfSegundoApellido.getText());
             propuesta.put("dni", tfDNI.getText());
-            propuesta.put("estado", cbEstado.getAccessibleText());
+            propuesta.put("estado", cbEstado.getSelectionModel().getSelectedItem().toString());
             propuesta.put("fechaNac", dpFechaNacimiento.getValue().toString());
             propuesta.put("FechaLimite", dpFechaLimite.getValue().toString());
             propuesta.put("direccion", tfDireccion.getText());
@@ -108,9 +108,9 @@ public class ControladorVentaPropuesta extends AbstractControlador {
     }
     public void cargarDesplegables(){
         ArrayList<String> estado = new ArrayList<>();
-        estado.add("Aceptada");
-        estado.add("Rechazada");
-        estado.add("Pendiente");
+        estado.add("aceptada");
+        estado.add("rechazada");
+        estado.add("pendiente");
         ObservableList<String> list = FXCollections.observableArrayList(estado);
         cbEstado.setItems(list);
     }

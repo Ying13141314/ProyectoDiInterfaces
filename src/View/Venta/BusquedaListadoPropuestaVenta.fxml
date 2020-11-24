@@ -121,9 +121,9 @@
                         <TableColumn fx:id="campoNombreCliente" prefWidth="159.20001220703125" text="Nombre Cliente" />
                         <TableColumn fx:id="campoPrimerApellido" minWidth="0.0" prefWidth="282.40000915527344" text="Primer Apellido" />
                         <TableColumn fx:id="campoDNI" prefWidth="156.00006103515625" text="DNI" />
-                        <TableColumn fx:id="campoDireccion" prefWidth="181.60003662109375" text="Dirección" />
-                        <TableColumn fx:id="campoEstado" prefWidth="113.5999755859375" text="Estado" />
-                        <TableColumn fx:id="campoFechaLimite" prefWidth="226.199951171875" text="Fecha Limite" />
+                        <TableColumn fx:id="campoDireccion" prefWidth="166.39996337890625" text="Dirección" />
+                        <TableColumn fx:id="campoEstado" prefWidth="171.20001220703125" text="Estado" />
+                        <TableColumn fx:id="campoFechaLimite" prefWidth="185.5999755859375" text="Fecha Limite" />
                     </columns>
                 </TableView>
             </children>

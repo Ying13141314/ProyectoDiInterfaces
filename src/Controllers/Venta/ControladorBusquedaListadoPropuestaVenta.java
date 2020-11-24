@@ -30,8 +30,6 @@ import java.sql.SQLException;
         //Estado
         @FXML
         private Button buttonCancelar;
-        @FXML
-        private Button buttonAceptar;
 
         @FXML
         private TableView<PropuestaVenta> propuestaTableView;
@@ -88,8 +86,6 @@ import java.sql.SQLException;
             if(e.getSource().equals(buttonCancelar)) {
                 ruta = "/View/Venta/Venta.fxml";
                 //Si le damos al botón aceptar entramos al siguiente.
-            } else if (e.getSource().equals(buttonAceptar)){
-                ruta = "/View/Venta/Venta.fxml";
             }
 
             FXMLLoader pane = new FXMLLoader(getClass().getResource(ruta));

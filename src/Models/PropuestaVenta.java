@@ -34,8 +34,8 @@ public class PropuestaVenta {
         propuesta = new SimpleStringProperty((String) propuestaVenta.get("propuesta"));
         estado = new SimpleStringProperty((String) propuestaVenta.get("estado"));
         fechaLimiteAcep = new SimpleStringProperty((String) propuestaVenta.get("FechaLimite"));
-
     }
+
 
     public PropuestaVenta(StringProperty nombreCliente, StringProperty primerApellido, StringProperty segundoApellido, StringProperty dni, StringProperty fechaNac, StringProperty direccion, StringProperty propuesta, StringProperty estado, StringProperty fechaLimiteAcep) {
         this.nombreCliente = nombreCliente;
@@ -48,6 +48,7 @@ public class PropuestaVenta {
         this.estado = estado;
         this.fechaLimiteAcep = fechaLimiteAcep;
     }
+
 
     //Getter and Setter
     public String getNombreCliente() {

@@ -1,9 +1,7 @@
 package Controllers.Venta;
 
 import Controllers.AbstractControlador;
-import DAO.ClientesDAO;
 import DAO.VentaPropuestaDAO;
-import Models.Cliente;
 import Models.PropuestaVenta;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -24,13 +22,13 @@ public class ControladorFichaPropuestaVenta extends AbstractControlador {
     @FXML
     private Button buttonCancelar,buttonActualizar,buttonBorrar;
     @FXML
-    private ChoiceBox cbEstado;
+    private ChoiceBox<String> cbEstado;
     @FXML
-    private TextField tfNombre,tfApellidos,tfDNI,tfDireccion;
+    private TextField tfNombre,tfPrimerApellido,tfSegundoApellido,tfDNI,tfDireccion;
     @FXML
     private TextArea taPropuesta;
     @FXML
-    private DatePicker dpFechaNacimiento;
+    private DatePicker dpFechaNacimiento,dpFechaLimite;
     private PropuestaVenta miPropuesta;
     private HashMap<String,Object> propuestaVenta;
 
@@ -48,11 +46,11 @@ public class ControladorFichaPropuestaVenta extends AbstractControlador {
     public void initialize(){
         //inicialzo estos dos ChoiceBox para poder mostrar esos datos.
         ArrayList<String> estado = new ArrayList<>();
-        estado.add("hombre");
-        estado.add("mujer");
+        estado.add("aceptada");
+        estado.add("rechazada");
+        estado.add("pendiente");
         ObservableList<String> list = FXCollections.observableArrayList(estado);
         cbEstado.setItems(list);
-
 
     }
 
@@ -65,7 +63,7 @@ public class ControladorFichaPropuestaVenta extends AbstractControlador {
     public void changeScene(ActionEvent e) throws IOException, SQLException {
         String ruta = "";
         if(e.getSource().equals(buttonCancelar)) {
-            ruta = "/View/Venta/BusquedaListadoPropuestaVenta.fxml";
+            ruta = "/View/Venta/Venta.fxml";
 
         } else if (e.getSource().equals(buttonActualizar)){
             actualizarDatos();
@@ -89,12 +87,14 @@ public class ControladorFichaPropuestaVenta extends AbstractControlador {
     public void obtenerDatosPropuestaVenta(){
         propuestaVenta = new HashMap<>();
         propuestaVenta.put("Nombre", tfNombre.getText());
-        propuestaVenta.put("Apellidos", tfApellidos.getText());
+        propuestaVenta.put("primerApellidos", tfPrimerApellido.getText());
+        propuestaVenta.put("segundoApellidos", tfSegundoApellido.getText());
         propuestaVenta.put("DNI", tfDNI.getText());
         propuestaVenta.put("Fecha", dpFechaNacimiento.getValue().toString());
         propuestaVenta.put("Direccion", tfDireccion.getText());
-        propuestaVenta.put("Estados", cbEstado.getSelectionModel().getSelectedItem().toString());
+        propuestaVenta.put("estado", cbEstado.getSelectionModel().getSelectedItem().toString());
         propuestaVenta.put("propuesta", taPropuesta.getText());
+        propuestaVenta.put("FechaLimi",dpFechaLimite.getValue().toString());
 
     }
 
@@ -127,9 +127,11 @@ public class ControladorFichaPropuestaVenta extends AbstractControlador {
      */
     public void mostrarDatosPropuesta(PropuestaVenta miPropuesta){
         tfNombre.setText(miPropuesta.getNombreCliente());
-        tfApellidos.setText(miPropuesta.getPrimerApellido());
+        tfPrimerApellido.setText(miPropuesta.getPrimerApellido());
+        tfSegundoApellido.setText(miPropuesta.getSegundoApellido());
         tfDNI.setText(miPropuesta.getDni());
         dpFechaNacimiento.setValue(LocalDate.parse(miPropuesta.getFechaNac()));
+        dpFechaLimite.setValue(LocalDate.parse(miPropuesta.getFechaLimiteAcep()));
         tfDireccion.setText(miPropuesta.getDireccion());
         cbEstado.setValue(miPropuesta.getEstado());
         taPropuesta.setText(miPropuesta.getPropuesta());
