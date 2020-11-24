@@ -95,7 +95,7 @@ public class ControladorVentaAltaCliente extends AbstractControlador {
             ClientesDAO cdao = new ClientesDAO();
             cdao.darAltaCliente(c, textError);
 
-            ruta = "/View/Venta/BusquedaListadoClientes.fxml";
+            ruta = "/View/Venta/Venta.fxml";
         }
         if(!textError.getText().equals("El DNI que has introducido ya existe.") || e.getSource().equals(buttonCancelar)) {
             FXMLLoader pane = new FXMLLoader(getClass().getResource(ruta));
