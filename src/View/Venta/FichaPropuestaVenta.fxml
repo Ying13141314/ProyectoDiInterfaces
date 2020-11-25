@@ -128,7 +128,7 @@
                         <Font name="Arial Bold" size="20.0" />
                     </font>
                 </Text>
-                <Button fx:id="buttonAceptar" layoutX="1155.0" layoutY="532.0" mnemonicParsing="false" onAction="#changeScene" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: #000000;" text="Aceptar" textFill="WHITE" />
+                <Button fx:id="buttonActualizar" layoutX="1155.0" layoutY="532.0" mnemonicParsing="false" onAction="#changeScene" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: #000000;" text="Actualizar" textFill="WHITE" />
                 <Button fx:id="buttonCancelar" layoutX="1050.0" layoutY="531.0" mnemonicParsing="false" onAction="#changeScene" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #C0C0C0; -fx-border-radius: 3px;" text="Cancelar" />
                 <Text fx:id="textError" fill="RED" layoutX="826.0" layoutY="538.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="224.13671875" />
                 <TextArea fx:id="taPropuesta" layoutX="46.0" layoutY="384.0" prefHeight="124.0" prefWidth="1194.0" promptText="Escribe aqui la propuesta...">

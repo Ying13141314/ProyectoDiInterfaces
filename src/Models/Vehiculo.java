@@ -9,15 +9,14 @@ import java.util.HashMap;
 public class Vehiculo {
 
     private IntegerProperty idVehiculo, numeroPuertas,numeroRuedas, idConsecionario;
-    private BooleanProperty vendido;
-    private StringProperty marca,modelo,fechaEntrada,fechaSalida,numeroBastidor,tipoVehiculo;
+    private StringProperty marca,modelo,fechaEntrada,fechaSalida,numeroBastidor,tipoVehiculo,vendido;
     private FloatProperty precio;
 
     public Vehiculo(ResultSet rs) throws SQLException {
         marca = new SimpleStringProperty(rs.getString("marca"));
         modelo = new SimpleStringProperty(rs.getString("modelo"));
         numeroPuertas = new SimpleIntegerProperty(rs.getInt("numeroPuertas"));
-        vendido = new SimpleBooleanProperty(rs.getBoolean("vendido"));
+        vendido = new SimpleStringProperty(rs.getString("vendido"));
         fechaEntrada = new SimpleStringProperty(rs.getDate("fechaEntrada").toLocalDate().toString());
         numeroRuedas = new SimpleIntegerProperty(rs.getInt("numeroRuedas"));
         if (rs.getDate("fechaSalida")!=null){
@@ -35,11 +34,7 @@ public class Vehiculo {
         marca = new SimpleStringProperty((String) vehiculo.get("Marca"));
         modelo = new SimpleStringProperty((String) vehiculo.get("Modelo"));
         precio = new SimpleFloatProperty(Float.parseFloat((String)vehiculo.get("Precio")));
-        if(vehiculo.get("Estado").equals("Vendido")){
-            vendido = new SimpleBooleanProperty(true);
-        } else {
-            vendido = new SimpleBooleanProperty(false);
-        }
+        vendido = new SimpleStringProperty((String) vehiculo.get("vendido"));
         numeroPuertas = new SimpleIntegerProperty(Integer.parseInt((String)vehiculo.get("NumeroPuertas")));
         numeroRuedas = new SimpleIntegerProperty(Integer.parseInt((String)vehiculo.get("NumeroRuedas")));
         numeroBastidor = new SimpleStringProperty((String) vehiculo.get("NumeroBastidor"));
@@ -52,7 +47,7 @@ public class Vehiculo {
     // getter and setter
 
 
-    public int getIdConsecionario() {
+    public Integer getIdConsecionario() {
         return idConsecionario.get();
     }
 
@@ -88,20 +83,32 @@ public class Vehiculo {
         return numeroPuertas;
     }
 
+    public void setNumeroPuertas(Integer numeroPuertas) {
+        this.numeroPuertas.set(numeroPuertas);
+    }
+
     public void setNumeroPuertas(int numeroPuertas) {
         this.numeroPuertas.set(numeroPuertas);
     }
 
-    public boolean isVendido() {
+    public void setNumeroRuedas(int numeroRuedas) {
+        this.numeroRuedas.set(numeroRuedas);
+    }
+
+    public String getVendido() {
         return vendido.get();
     }
 
-    public BooleanProperty vendidoProperty() {
+    public StringProperty vendidoProperty() {
         return vendido;
     }
 
-    public void setVendido(boolean vendido) {
+    public void setVendido(String vendido) {
         this.vendido.set(vendido);
+    }
+
+    public void setPrecio(float precio) {
+        this.precio.set(precio);
     }
 
     public String getMarca() {
@@ -147,7 +154,7 @@ public class Vehiculo {
         return precio;
     }
 
-    public void setPrecio(float precio) {
+    public void setPrecio(Float precio) {
         this.precio.set(precio);
     }
 
@@ -159,7 +166,7 @@ public class Vehiculo {
         return numeroRuedas;
     }
 
-    public void setNumeroRuedas(int numeroRuedas) {
+    public void setNumeroRuedas(Integer numeroRuedas) {
         this.numeroRuedas.set(numeroRuedas);
     }
 

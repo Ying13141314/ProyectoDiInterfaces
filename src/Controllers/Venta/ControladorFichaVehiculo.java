@@ -5,6 +5,8 @@ import Controllers.AbstractControladorVenta;
 import DAO.VehiculoDAO;
 
 import Models.Vehiculo;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +17,7 @@ import javafx.scene.control.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -27,11 +30,11 @@ public class ControladorFichaVehiculo extends AbstractControladorVenta {
     @FXML
     private Button buttonCancelar,buttonBorrar,buttonActualizar;
     @FXML
-    private TextField tfBastidor,tfMarca,tfModelo,tfPrecio,tfNumeroPuertas,tfNumeroRuedas;
+    private TextField tfNumeroBastidor,tfMarca,tfModelo,tfPrecio,tfNumeroPuertas,tfNumeroRuedas,tfConcesionario;
     @FXML
     private DatePicker dpFechaEntrada,dpFechaSalida;
     @FXML
-    private ChoiceBox cbTipoVehiculo;
+    private ChoiceBox<String> cbTipoVehiculo,cbEstado;
     private Vehiculo miVehiculo;
     private HashMap<String,Object> vehiculo;
 
@@ -46,6 +49,18 @@ public class ControladorFichaVehiculo extends AbstractControladorVenta {
      */
     @FXML
     public void initialize(){
+        ArrayList<String> tipoVehiculos = new ArrayList<>();
+        tipoVehiculos.add("coches");
+        tipoVehiculos.add("motocicleta");
+        tipoVehiculos.add("ciclomotor");
+        ObservableList<String> list = FXCollections.observableArrayList(tipoVehiculos);
+        cbTipoVehiculo.setItems(list);
+
+        ArrayList<String> tipoEstado = new ArrayList<>();
+        tipoEstado.add("vendido");
+        tipoEstado.add("en venta");
+        ObservableList<String> list2 = FXCollections.observableArrayList(tipoEstado);
+        cbEstado.setItems(list2);
     }
 
     /**
@@ -58,18 +73,17 @@ public class ControladorFichaVehiculo extends AbstractControladorVenta {
         String ruta = "";
         if(e.getSource().equals(buttonCancelar)) {
             ruta = "/View/Venta/Venta.fxml";
-
         } else if (e.getSource().equals(buttonActualizar)){
             actualizarDatos();
-            ruta = "/View/Venta/Venta.fxml";
+            ruta = "/View/Venta/BusquedaListadoVehiculo.fxml";
         } else if (e.getSource().equals(buttonBorrar)){
             borrarDatos();
-            ruta = "/View/Venta/BusquedaListadoVehiculo.fxml.fxml";
+            ruta = "/View/Venta/BusquedaListadoVehiculo.fxml";
         }
         FXMLLoader pane = new FXMLLoader(getClass().getResource(ruta));
         miApp.getPrimaryStage().setScene(new Scene(pane.load(), 1280, 720));
 
-        ControladorVenta co = pane.getController();
+        AbstractControladorVenta co = pane.getController();
         co.setMiApp(miApp);
     }
 
@@ -85,9 +99,25 @@ public class ControladorFichaVehiculo extends AbstractControladorVenta {
         vehiculo.put("Precio", tfPrecio.getText());
         vehiculo.put("numeroRuedas", tfNumeroRuedas.toString());
         vehiculo.put("fechaSalida", dpFechaSalida.getValue().toString());
-        vehiculo.put("numeroBastidor", tfBastidor.getText());
+        vehiculo.put("numeroBastidor", tfNumeroBastidor.getText());
+        vehiculo.put("Estado",cbEstado.getSelectionModel().getSelectedItem());
+        vehiculo.put("TipoVehiculo",cbTipoVehiculo.getSelectionModel().getSelectedItem());
+        vehiculo.put("idConcesionario",tfConcesionario.getText());
 
+    }
 
+    private void actualizar(){
+        miVehiculo.setMarca(tfMarca.getText());
+        miVehiculo.setModelo(tfModelo.getText());
+        miVehiculo.setNumeroPuertas(Integer.parseInt(tfNumeroPuertas.getText()));
+        miVehiculo.setFechaEntrada(dpFechaEntrada.getValue().toString());
+        miVehiculo.setPrecio(Float.parseFloat(tfPrecio.getText()));
+        miVehiculo.setNumeroRuedas(Integer.parseInt(tfNumeroRuedas.getText()));
+        miVehiculo.setFechaSalida(dpFechaSalida.getValue().toString());
+        miVehiculo.setNumeroBastidor(tfNumeroBastidor.getText());
+        miVehiculo.setVendido(cbEstado.getSelectionModel().getSelectedItem());
+        miVehiculo.setTipoVehiculo(cbTipoVehiculo.getSelectionModel().getSelectedItem());
+        miVehiculo.setIdConsecionario(tfConcesionario.getLength());
     }
 
     /**
@@ -95,8 +125,7 @@ public class ControladorFichaVehiculo extends AbstractControladorVenta {
      * @throws SQLException
      */
     private void actualizarDatos() throws SQLException {
-        obtenerDatosVehiculo();
-        Vehiculo miVehiculo = new Vehiculo(vehiculo);
+        actualizar();
         VehiculoDAO miVehiculoDao = new VehiculoDAO();
         miVehiculoDao.actualizarDatos(miVehiculo);
     }
@@ -106,33 +135,36 @@ public class ControladorFichaVehiculo extends AbstractControladorVenta {
      * @throws SQLException
      */
     private void borrarDatos() throws SQLException {
-        obtenerDatosVehiculo();
-        Vehiculo miVehiculo = new Vehiculo(vehiculo);
         VehiculoDAO miVehiculoDao = new VehiculoDAO();
         miVehiculoDao.borrarVehiculo(miVehiculo);
 
     }
 
     /**
-     * Método que me muestra por pantalla los datos del cliente.
-     * @param miVehiculo
+     * Método que me muestra por pantalla los datos del vehiculo.
+     * @param
      */
-    public void mostrarDatosVehiculo(Vehiculo miVehiculo){
+    public void mostrarDatosVehiculo(){
 
         tfMarca.setText(miVehiculo.getMarca());
         tfModelo.setText(miVehiculo.getModelo());
         if (miVehiculo.getNumeroBastidor()!=null){
-            tfBastidor.setText(miVehiculo.getNumeroBastidor());
+            tfNumeroBastidor.setText(miVehiculo.getNumeroBastidor());
         }else{
-            tfBastidor.setText("no existe");
+            tfNumeroBastidor.setText("no existe");
         }
         tfNumeroRuedas.setText(miVehiculo.getNumeroRuedas().toString());
         tfPrecio.setText(miVehiculo.getPrecio().toString());
         tfNumeroPuertas.setText(miVehiculo.getNumeroPuertas().toString());
         cbTipoVehiculo.setValue(miVehiculo.getTipoVehiculo());
-        dpFechaSalida.setValue(LocalDate.parse(miVehiculo.getFechaSalida()));
-        dpFechaEntrada.setValue(LocalDate.parse(miVehiculo.getFechaEntrada()));
+        if (miVehiculo.getFechaSalida()!=null){
+            dpFechaSalida.setValue(LocalDate.parse(miVehiculo.getFechaSalida()));
+        }
 
+        dpFechaEntrada.setValue(LocalDate.parse(miVehiculo.getFechaEntrada()));
+        cbTipoVehiculo.setValue(miVehiculo.getTipoVehiculo());
+        tfConcesionario.setText(miVehiculo.getIdConsecionario().toString());
+        cbEstado.setValue(miVehiculo.getVendido());
     }
 
     /**
@@ -141,5 +173,6 @@ public class ControladorFichaVehiculo extends AbstractControladorVenta {
      */
     public void setVehiculo(Vehiculo miVehiculo){
         this.miVehiculo = miVehiculo;
+        mostrarDatosVehiculo();
     }
 }

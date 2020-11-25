@@ -107,7 +107,8 @@ public class ControladorBusquedaListadoVehiculo extends AbstractControladorVenta
                         ControladorFichaVehiculo co = pane.getController();
                         co.setMiApp(miApp);
                         Vehiculo miVehiculo = vehiculoTableView.getSelectionModel().getSelectedItem();
-                        co.mostrarDatosVehiculo(miVehiculo);
+                        co.setVehiculo(miVehiculo);
+                        //co.mostrarDatosVehiculo(miVehiculo);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

@@ -110,7 +110,8 @@ import java.sql.SQLException;
                             ControladorFichaPropuestaVenta co = pane.getController();
                             co.setMiApp(miApp);
                             PropuestaVenta miPropuesta = propuestaTableView.getSelectionModel().getSelectedItem();
-                            co.mostrarDatosPropuesta(miPropuesta);
+                            //co.mostrarDatosPropuesta();
+                            co.setPropuesta(miPropuesta);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }

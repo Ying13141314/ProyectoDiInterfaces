@@ -84,27 +84,37 @@ public class ControladorFichaPropuestaVenta extends AbstractControladorVenta {
     /**
      * Método para obtener los datos que tenemos.
      */
-    public void obtenerDatosPropuestaVenta(){
+    public void obtenerDatosPropuestaVenta() throws SQLException {
         propuestaVenta = new HashMap<>();
-        propuestaVenta.put("Nombre", tfNombre.getText());
-        propuestaVenta.put("primerApellidos", tfPrimerApellido.getText());
-        propuestaVenta.put("segundoApellidos", tfSegundoApellido.getText());
-        propuestaVenta.put("DNI", tfDNI.getText());
-        propuestaVenta.put("Fecha", dpFechaNacimiento.getValue().toString());
-        propuestaVenta.put("Direccion", tfDireccion.getText());
-        propuestaVenta.put("estado", cbEstado.getSelectionModel().getSelectedItem().toString());
+        propuestaVenta.put("nombreCliente", tfNombre.getText());
+        propuestaVenta.put("primerApellido", tfPrimerApellido.getText());
+        propuestaVenta.put("segundoApellido", tfSegundoApellido.getText());
+        propuestaVenta.put("dni", tfDNI.getText());
+        propuestaVenta.put("fechaNac", dpFechaNacimiento.getValue().toString());
+        propuestaVenta.put("direccion", tfDireccion.getText());
+        propuestaVenta.put("estado", cbEstado.getSelectionModel().getSelectedItem());
         propuestaVenta.put("propuesta", taPropuesta.getText());
         propuestaVenta.put("FechaLimi",dpFechaLimite.getValue().toString());
+        miPropuesta = new PropuestaVenta(propuestaVenta);
+    }
 
+    private void actualizar()  {
+        miPropuesta.setNombreCliente(tfNombre.getText());
+        miPropuesta.setPrimerApellido(tfPrimerApellido.getText());
+        miPropuesta.setSegundoApellido(tfSegundoApellido.getText());
+        miPropuesta.setDni(tfDNI.getText());
+        miPropuesta.setFechaNac( dpFechaNacimiento.getValue().toString());
+        miPropuesta.setDireccion(tfDireccion.getText());
+        miPropuesta.setEstado(cbEstado.getSelectionModel().getSelectedItem());
+        miPropuesta.setPropuesta(taPropuesta.getText());
+        miPropuesta.setFechaLimiteAcep(dpFechaLimite.getValue().toString());
     }
 
     /**
      * Método que actualiza los datos del cliente si modificamos los campos.
-     * @throws SQLException
      */
-    private void actualizarDatos() throws SQLException {
-        obtenerDatosPropuestaVenta();
-        PropuestaVenta miPropuesta = new PropuestaVenta(propuestaVenta);
+    private void actualizarDatos()  {
+        actualizar();
         VentaPropuestaDAO miVentasPropuestaDao = new VentaPropuestaDAO();
         miVentasPropuestaDao.actualizarDatos(miPropuesta);
     }
@@ -114,18 +124,16 @@ public class ControladorFichaPropuestaVenta extends AbstractControladorVenta {
      * @throws SQLException
      */
     private void borrarDatos() throws SQLException {
-        obtenerDatosPropuestaVenta();
-        PropuestaVenta miPropuesta = new PropuestaVenta(propuestaVenta);
         VentaPropuestaDAO miVentasPropuestaDao = new VentaPropuestaDAO();
-        miVentasPropuestaDao.actualizarDatos(miPropuesta);
+        miVentasPropuestaDao.borrarPropuesta(miPropuesta);
 
     }
 
     /**
      * Método que me muestra por pantalla los datos del propuesta.
-     * @param miPropuesta
+     * @param
      */
-    public void mostrarDatosPropuesta(PropuestaVenta miPropuesta){
+    public void mostrarDatosPropuesta(){
         tfNombre.setText(miPropuesta.getNombreCliente());
         tfPrimerApellido.setText(miPropuesta.getPrimerApellido());
         tfSegundoApellido.setText(miPropuesta.getSegundoApellido());
@@ -143,5 +151,7 @@ public class ControladorFichaPropuestaVenta extends AbstractControladorVenta {
      */
     public void setPropuesta(PropuestaVenta miPropuesta){
         this.miPropuesta = miPropuesta;
+        mostrarDatosPropuesta();
+
     }
 }

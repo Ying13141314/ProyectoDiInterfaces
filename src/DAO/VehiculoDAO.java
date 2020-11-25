@@ -30,7 +30,7 @@ public class VehiculoDAO extends AbstractDAO {
             ps.setInt(7, vehiculo.getNumeroRuedas());
             ps.setString(8, vehiculo.getNumeroBastidor());
             ps.setString(9, vehiculo.getTipoVehiculo());
-            ps.setBoolean(10, vehiculo.isVendido());
+            ps.setString(10, vehiculo.getVendido());
             ps.setInt(11, vehiculo.getIdConsecionario());
             ps.executeUpdate();
         }
@@ -43,18 +43,20 @@ public class VehiculoDAO extends AbstractDAO {
      */
     public void actualizarDatos(Vehiculo miVehiculo) {
 
-        String SQL = "UPDATE vehiculo SET marca=?,modelo=?,numeroPuertas=?,fechaEntrada=?,fechaSalida=?,precio=?,numeroRuedas=?,tipoVehiculo=? where numeroBastidor =?";
+        String SQL = "UPDATE vehiculo SET marca=?,modelo=?,numeroPuertas=?,vendido=?,fechaEntrada=?,fechaSalida=?,precio=?,numeroRuedas=?,tipoVehiculo=? where numeroBastidor =?";
 
         try{
             PreparedStatement ps = conexion.prepareStatement(SQL);
             ps.setString(1, miVehiculo.getMarca());
             ps.setString(2, miVehiculo.getModelo());
             ps.setInt(3, miVehiculo.getNumeroPuertas());
-            ps.setString(4, miVehiculo.getFechaEntrada());
-            ps.setString(5, miVehiculo.getFechaSalida());
-            ps.setFloat(6, miVehiculo.getPrecio());
-            ps.setInt(7, miVehiculo.getNumeroRuedas());
+            ps.setString(4,miVehiculo.getVendido());
+            ps.setString(5, miVehiculo.getFechaEntrada());
+            ps.setString(6, miVehiculo.getFechaSalida());
+            ps.setFloat(7, miVehiculo.getPrecio());
+            ps.setInt(8, miVehiculo.getNumeroRuedas());
             ps.setString(9, miVehiculo.getTipoVehiculo());
+            ps.setString(10, miVehiculo.getNumeroBastidor());
             ps.executeUpdate();
 
             System.out.println("Actualizado");

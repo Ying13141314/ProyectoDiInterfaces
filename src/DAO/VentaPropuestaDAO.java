@@ -54,19 +54,19 @@ public class VentaPropuestaDAO extends AbstractDAO{
      */
     public void actualizarDatos(PropuestaVenta miVenta) {
 
-        String SQL = "UPDATE ventas SET nombreCliente=?,primerApellido=?,segundoApellido=?,dni=?,fechaNacimiento=?,direccion=?,propuesta=?,estado=?,fechaLimiteAceptación=? where dni =?";
+        String SQL = "UPDATE ventas SET nombreCliente=?,primerApellido=?,segundoApellido=?,fechaNacimiento=?,direccion=?,propuesta=?,estado=?,fechaLimiteAceptación=? where dni =?";
 
         try{
             PreparedStatement ps = conexion.prepareStatement(SQL);
             ps.setString(1, miVenta.getNombreCliente());
             ps.setString(2, miVenta.getPrimerApellido());
             ps.setString(3, miVenta.getSegundoApellido());
-            ps.setString(4, miVenta.getDni());
-            ps.setString(5, (miVenta.getFechaNac()));
-            ps.setString(6, miVenta.getDireccion());
-            ps.setString(7, miVenta.getPropuesta());
-            ps.setString(8, miVenta.getEstado());
-            ps.setString(9, miVenta.getFechaLimiteAcep());
+            ps.setString(4, miVenta.getFechaNac());
+            ps.setString(5, miVenta.getDireccion());
+            ps.setString(6, miVenta.getPropuesta());
+            ps.setString(7, miVenta.getEstado());
+            ps.setString(8, miVenta.getFechaLimiteAcep());
+            ps.setString(9, miVenta.getDni());
 
             ps.executeUpdate();
 
