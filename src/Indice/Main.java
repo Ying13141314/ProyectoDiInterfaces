@@ -1,6 +1,6 @@
 package Indice;
 
-import Controllers.AbstractControladorVenta;
+import Controllers.Venta.AbstractControladorVenta;
 import Controllers.Jefe.ControladorJefe;
 import Controllers.Indice.ControladorLogin;
 import Controllers.Mecanico.AbstractControladorMecanico;
@@ -54,6 +54,7 @@ public class Main extends Application {
         if(miUsuario.getTipo().equals(AbstractUsuario.VENTA)){
             ruta = "/View/Venta/Venta.fxml";
         }else if (miUsuario.getTipo().equals(AbstractUsuario.MECANICO)){
+
             ruta = "/View/Mecanico/Mecanico.fxml";
         }else{
             ruta ="/View/Jefe.fxml";

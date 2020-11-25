@@ -1,6 +1,6 @@
 package Models;
 
-public class Tarea {
+public class Trabajo {
 
     private String nombre;
     private String estado;

@@ -1,12 +1,7 @@
 package Controllers.Venta;
 
-import Controllers.AbstractControladorVenta;
-import DAO.ClientesDAO;
-import DAO.VehiculoDAO;
 import DAO.VentaPropuestaDAO;
-import Models.Cliente;
 import Models.PropuestaVenta;
-import Models.Vehiculo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;

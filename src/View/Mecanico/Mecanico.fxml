@@ -29,7 +29,7 @@
                         </ImageView>
                     </children>
                 </Pane>
-                <Pane fx:id="panelConsultarCliente" layoutX="270.0" onMouseClicked="#panelSuperior" onMouseEntered="#shadowPane" onMouseExited="#normalPane" prefHeight="95.0" prefWidth="503.0" style="-fx-background-color: #e9c46a;">
+                <Pane fx:id="panelConsultarCliente" layoutX="270.0" onMouseClicked="#panelSuperior" onMouseEntered="#shadowPane" onMouseExited="#normalPane" prefHeight="95.0" prefWidth="506.0" style="-fx-background-color: #e9c46a;">
                     <children>
                         <Text fx:id="BuscaCliente" fill="WHITE" layoutX="182.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Consultar Cliente">
                             <font>
@@ -54,12 +54,12 @@
                         <Image url="@../Resources/fondo_aplicacion.jpg" />
                     </image>
                 </ImageView>
-                <Button fx:id="buttonTrabajos" layoutX="75.0" layoutY="226.0" mnemonicParsing="false" onAction="#changeScene" prefHeight="74.0" prefWidth="400.0" style="-fx-background-color: #7A7A7A;" text="TRABAJOS" textFill="WHITE">
+                <Button fx:id="buttonTrabajos" layoutX="75.0" layoutY="226.0" mnemonicParsing="false" onAction="#changeScene" prefHeight="74.0" prefWidth="400.0" style="-fx-background-color: #7A7A7A;" text="TRABAJO ASIGNADO" textFill="WHITE">
                     <font>
                         <Font name="Arial Bold" size="16.0" />
                     </font>
                 </Button>
-                <Button fx:id="buttonCrearCliente" layoutX="805.0" layoutY="226.0" mnemonicParsing="false" onAction="#changeScene" prefHeight="74.0" prefWidth="400.0" style="-fx-background-color: #7A7A7A;" text="CREAR CLIENTE" textFill="WHITE">
+                <Button fx:id="buttonCrearCliente" layoutX="805.0" layoutY="226.0" mnemonicParsing="false" onAction="#changeScene" prefHeight="74.0" prefWidth="400.0" style="-fx-background-color: #7A7A7A;" text="CONSULTAR FICHA CLIENTE" textFill="WHITE">
                     <font>
                         <Font name="Arial Bold" size="16.0" />
                     </font>

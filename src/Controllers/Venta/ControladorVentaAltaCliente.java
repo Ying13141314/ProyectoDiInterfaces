@@ -1,6 +1,5 @@
 package Controllers.Venta;
 
-import Controllers.AbstractControladorVenta;
 import DAO.ClientesDAO;
 import Models.Cliente;
 import javafx.collections.FXCollections;

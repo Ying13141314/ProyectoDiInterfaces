@@ -1,6 +1,5 @@
 package Controllers.Venta;
 
-import Controllers.AbstractControladorVenta;
 import DAO.VehiculoDAO;
 import Models.Vehiculo;
 import javafx.event.ActionEvent;

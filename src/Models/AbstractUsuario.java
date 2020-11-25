@@ -38,6 +38,9 @@ public abstract class AbstractUsuario {
         }else if(rs.getString("tipo").equals(JEFE)){
             return new Jefe(rs);
         }else if (rs.getString("tipo").equals(MECANICO)){
+            if(rs.getBoolean("jefe") == true){
+                return new MecanicoJefe(rs);
+            }
             return new Mecanico(rs);
         }
         return null;

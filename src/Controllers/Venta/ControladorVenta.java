@@ -1,6 +1,5 @@
 package Controllers.Venta;
 
-import Controllers.AbstractControladorVenta;
 import Indice.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
