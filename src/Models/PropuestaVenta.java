@@ -8,12 +8,12 @@ import java.sql.SQLException;
 import java.util.HashMap;
 
 public class PropuestaVenta {
-    private StringProperty nombreCliente,primerApellido,segundoApellido,dni,fechaNac,direccion,propuesta,estado,fechaLimiteAcep;
+    private StringProperty nombreCliente,primerApellido,dni,fechaNac,direccion,propuesta,estado,fechaLimiteAcep;
+    private Integer idCliente,idVehiculo,idVendedor;
 
     public PropuestaVenta(ResultSet rs) throws SQLException {
         nombreCliente = new SimpleStringProperty(rs.getString("nombreCliente"));
         primerApellido = new SimpleStringProperty(rs.getString("primerApellido"));
-        segundoApellido = new SimpleStringProperty(rs.getString("segundoApellido"));
         dni = new SimpleStringProperty(rs.getString("dni"));
         //.toLocalDate sale en formato español
         fechaNac = new SimpleStringProperty(rs.getDate("fechaNacimiento").toLocalDate().toString());
@@ -21,25 +21,29 @@ public class PropuestaVenta {
         propuesta = new SimpleStringProperty(rs.getString("propuesta"));
         estado = new SimpleStringProperty(rs.getString("estado"));
         fechaLimiteAcep = new SimpleStringProperty(rs.getString("fechaLimiteAceptación"));
+        idCliente = rs.getInt("idCliente");
+        idVehiculo= rs.getInt("idVehiculo");
+        idVendedor = rs.getInt("idVendedor");
     }
 
-    public PropuestaVenta(HashMap<String,Object> propuestaVenta) throws SQLException {
-        nombreCliente = new SimpleStringProperty((String) propuestaVenta.get("nombreCliente"));
-        primerApellido = new SimpleStringProperty((String) propuestaVenta.get("primerApellido"));
-        segundoApellido = new SimpleStringProperty((String) propuestaVenta.get("segundoApellido"));
-        dni = new SimpleStringProperty((String) propuestaVenta.get("dni"));
-        fechaNac = new SimpleStringProperty((String) propuestaVenta.get("fechaNac"));
-        direccion = new SimpleStringProperty((String) propuestaVenta.get("direccion"));
-        propuesta = new SimpleStringProperty((String) propuestaVenta.get("propuesta"));
-        estado = new SimpleStringProperty((String) propuestaVenta.get("estado"));
-        fechaLimiteAcep = new SimpleStringProperty((String) propuestaVenta.get("FechaLimite"));
+    public PropuestaVenta(HashMap<String,String> propuestaVenta) throws SQLException {
+        nombreCliente = new SimpleStringProperty(propuestaVenta.get("nombreCliente"));
+        primerApellido = new SimpleStringProperty(propuestaVenta.get("primerApellido"));
+        dni = new SimpleStringProperty( propuestaVenta.get("dni"));
+        fechaNac = new SimpleStringProperty( propuestaVenta.get("fechaNac"));
+        direccion = new SimpleStringProperty( propuestaVenta.get("direccion"));
+        propuesta = new SimpleStringProperty( propuestaVenta.get("propuesta"));
+        estado = new SimpleStringProperty( propuestaVenta.get("estado"));
+        fechaLimiteAcep = new SimpleStringProperty( propuestaVenta.get("FechaLimite"));
+        idCliente = Integer.parseInt(propuestaVenta.get("idCliente"));
+        idVehiculo= Integer.parseInt(propuestaVenta.get("idVehiculo"));
+        idVendedor = Integer.parseInt(propuestaVenta.get("idVendedor"));
     }
 
 
-    public PropuestaVenta(StringProperty nombreCliente, StringProperty primerApellido, StringProperty segundoApellido, StringProperty dni, StringProperty fechaNac, StringProperty direccion, StringProperty propuesta, StringProperty estado, StringProperty fechaLimiteAcep) {
+    public PropuestaVenta(StringProperty nombreCliente, StringProperty primerApellido, StringProperty dni, StringProperty fechaNac, StringProperty direccion, StringProperty propuesta, StringProperty estado, StringProperty fechaLimiteAcep) {
         this.nombreCliente = nombreCliente;
         this.primerApellido = primerApellido;
-        this.segundoApellido = segundoApellido;
         this.dni = dni;
         this.fechaNac = fechaNac;
         this.direccion = direccion;
@@ -50,6 +54,32 @@ public class PropuestaVenta {
 
 
     //Getter and Setter
+
+
+    public Integer getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(Integer idCliente) {
+        this.idCliente = idCliente;
+    }
+
+    public Integer getIdVehiculo() {
+        return idVehiculo;
+    }
+
+    public void setIdVehiculo(Integer idVehiculo) {
+        this.idVehiculo = idVehiculo;
+    }
+
+    public Integer getIdVendedor() {
+        return idVendedor;
+    }
+
+    public void setIdVendedor(Integer idVendedor) {
+        this.idVendedor = idVendedor;
+    }
+
     public String getNombreCliente() {
         return nombreCliente.get();
     }
@@ -72,18 +102,6 @@ public class PropuestaVenta {
 
     public void setPrimerApellido(String primerApellido) {
         this.primerApellido.set(primerApellido);
-    }
-
-    public String getSegundoApellido() {
-        return segundoApellido.get();
-    }
-
-    public StringProperty segundoApellidoProperty() {
-        return segundoApellido;
-    }
-
-    public void setSegundoApellido(String segundoApellido) {
-        this.segundoApellido.set(segundoApellido);
     }
 
     public String getDni() {

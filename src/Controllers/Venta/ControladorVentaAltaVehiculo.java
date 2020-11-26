@@ -11,10 +11,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.DatePicker;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -28,18 +26,23 @@ import java.util.HashMap;
 public class ControladorVentaAltaVehiculo extends AbstractControladorVenta {
 
     @FXML
-    private TextField tfNumeroBastidor,tfMarca,tfModelo,tfPrecio,tfNumeroPuertas,tfNumeroRuedas, tfConcesionario;
+    private TextField tfNumeroBastidor,tfMarca,tfModelo,tfPrecio,tfNumeroPuertas,tfNumeroRuedas,tfConcesionario,tfAno,tfKilometro;
+    @FXML
+    public Text lbConcesionarios;
+
     @FXML
     private DatePicker dpFechaEntrada,dpFechaSalida;
     @FXML
-    private ChoiceBox cbTipoVehiculo, cbEstado;
+    private ChoiceBox cbTipoVehiculo, cbEstado,cbCombustible;
     @FXML
     Button buttonCancelar;
     @FXML
     Button buttonAceptar;
 
     @FXML
-    public void initialize(){
+    public void initialize() {
+        tfConcesionario.setVisible(false);
+        lbConcesionarios.setVisible(false);
         cargarDesplegables();
     }
 
@@ -63,10 +66,13 @@ public class ControladorVentaAltaVehiculo extends AbstractControladorVenta {
             vehiculo.put("NumeroRuedas",tfNumeroRuedas.getText());
             vehiculo.put("NumeroBastidor",tfNumeroBastidor.getText());
             vehiculo.put("TipoVehiculo", cbTipoVehiculo.getSelectionModel().getSelectedItem().toString());
-            vehiculo.put("IdConcesionario",tfConcesionario.getText());
+            vehiculo.put("IdConcesionario","8");
             vehiculo.put("FechaEntrada", dpFechaEntrada.getValue().toString());
             vehiculo.put("Estado", cbEstado.getSelectionModel().getSelectedItem().toString());
             vehiculo.put("FechaSalida", dpFechaSalida.getValue().toString());
+            vehiculo.put("ano",tfAno.getText());
+            vehiculo.put("combustible",cbCombustible.getSelectionModel().getSelectedItem().toString());
+            vehiculo.put("kilometros",tfKilometro.getText());
 
 
             Vehiculo v = new Vehiculo(vehiculo);
@@ -98,5 +104,17 @@ public class ControladorVentaAltaVehiculo extends AbstractControladorVenta {
         tipoEstado.add("En venta");
         ObservableList<String> list2 = FXCollections.observableArrayList(tipoEstado);
         cbEstado.setItems(list2);
+
+        ArrayList<String> combustible = new ArrayList<>();
+        combustible.add("diesel");
+        combustible.add("gasolina");
+        combustible.add("hibrido");
+        combustible.add("electrico");
+        ObservableList<String> list3 = FXCollections.observableArrayList(combustible);
+        cbCombustible.setItems(list3);
+
+        /*VehiculoDAO miVehiculo = new VehiculoDAO();
+        ObservableList<Vehiculo> datosVehiculo = miVehiculo.anadirVehiculoLista();
+        cbConcesionario.setItems(datosVehiculo);*/
     }
 }

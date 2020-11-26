@@ -90,7 +90,6 @@ public class ControladorLogin {
 
         } else {
             String hashpass = toHexString(getSHA(tfPassw.getText()));
-
             AbstractUsuario au = miUsuario.loguearse(hashpass, tfUser.getText());
             if (au == null) {
                 //Cambiamos el borde a rojo si hemos introducido mal el usuario.

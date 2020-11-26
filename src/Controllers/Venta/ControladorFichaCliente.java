@@ -3,6 +3,8 @@ package Controllers.Venta;
 import Controllers.AbstractControladorVenta;
 import DAO.ClientesDAO;
 import Models.Cliente;
+import Models.PropuestaVenta;
+import Models.Vehiculo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,7 +26,7 @@ import java.util.HashMap;
 public class ControladorFichaCliente extends AbstractControladorVenta {
 
     @FXML
-    private Button buttonCancelar,buttonActualizar,buttonBorrar;
+    private Button buttonCancelar,buttonActualizar,buttonBorrar,buttonAnadirPropuesta;
     @FXML
     private ChoiceBox cbSexo;
     @FXML
@@ -36,6 +38,7 @@ public class ControladorFichaCliente extends AbstractControladorVenta {
     @FXML
     private DatePicker dpFechaNacimiento;
     private Cliente miCliente;
+    private PropuestaVenta miPropuesta;
     private HashMap <String,String> cliente;
 
 
@@ -84,6 +87,14 @@ public class ControladorFichaCliente extends AbstractControladorVenta {
         }else if (e.getSource().equals(buttonBorrar)){
             borrarDatos();
             ruta = "/View/Venta/BusquedaListadoClientes.fxml";
+        }else if (e.getSource().equals(buttonAnadirPropuesta)){
+            FXMLLoader pane = new FXMLLoader(getClass().getResource("/View/Venta/VentaAltaPropuesta.fxml"));
+            miApp.getPrimaryStage().setScene(new Scene(pane.load(), 1280, 720));
+
+            ControladorVentaPropuesta co = pane.getController();
+            co.setCliente(miCliente);
+            co.setMiApp(miApp);
+            return;
         }
         FXMLLoader pane = new FXMLLoader(getClass().getResource(ruta));
         miApp.getPrimaryStage().setScene(new Scene(pane.load(), 1280, 720));
@@ -110,15 +121,25 @@ public class ControladorFichaCliente extends AbstractControladorVenta {
 
     }
 
+    private void actualizar(){
+        miCliente.setNombre(tfNombre.getText());
+        miCliente.setApellido(tfApellido.getText());
+        miCliente.setFechaNac(dpFechaNacimiento.getValue().toString());
+        miCliente.setDireccion(tfDireccion.getText());
+        miCliente.setSexo(cbSexo.getSelectionModel().getSelectedItem().toString());
+        miCliente.setCorreo(tfCorreo.getText());
+        miCliente.setTelefono(tfTelefono.getText());
+        miCliente.setTipoComunicacion(cbOpciones.getSelectionModel().getSelectedItem().toString());
+
+    }
     /**
      * Método que actualiza los datos del cliente si modificamos los campos.
      * @throws SQLException
      */
     private void actualizarDatos() throws SQLException {
-        obtenerDatosCliente();
-        Cliente miClientes = new Cliente(cliente);
+        actualizar();
         ClientesDAO miClienteDao = new ClientesDAO();
-        miClienteDao.actualizarDatos(miClientes);
+        miClienteDao.actualizarDatos(miCliente);
     }
 
     /**
@@ -126,18 +147,15 @@ public class ControladorFichaCliente extends AbstractControladorVenta {
      * @throws SQLException
      */
     private void borrarDatos() throws SQLException {
-        obtenerDatosCliente();
-        Cliente miClientes = new Cliente(cliente);
         ClientesDAO miClienteDao = new ClientesDAO();
-        miClienteDao.borrarCliente(miClientes);
+        miClienteDao.borrarCliente(miCliente);
 
     }
 
     /**
      * Método que me muestra por pantalla los datos del cliente.
-     * @param miCliente
      */
-    public void mostrarDatosCliente(Cliente miCliente){
+    public void mostrarDatosCliente(){
         tfNombre.setText(miCliente.getNombre());
         tfApellido.setText(miCliente.getApellido());
         lbDni.setText(miCliente.getDni());
@@ -155,6 +173,7 @@ public class ControladorFichaCliente extends AbstractControladorVenta {
      */
     public void setCliente(Cliente miCliente){
         this.miCliente = miCliente;
+        mostrarDatosCliente();
     }
 
 

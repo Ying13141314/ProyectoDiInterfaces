@@ -29,10 +29,23 @@ public class UsuarioDAO extends AbstractDAO {
 
 
         if (rs.isBeforeFirst()){
+
             rs.next();
 
+            if(rs.getString("tipo").equals("venta")){
+                String sql2 = "SELECT * from usuario left join vendedor on usuario.idUsuario=vendedor.idUsuario";
 
-            miUsuario = AbstractUsuario.tipo(rs);
+                PreparedStatement ps2 = conexion.prepareStatement(sql2);
+                ResultSet rs2 = ps2.executeQuery();
+                rs2.next();
+                miUsuario = AbstractUsuario.tipo(rs2);
+
+            }else{
+                miUsuario = AbstractUsuario.tipo(rs);
+            }
+
+
+
         }
 
         return miUsuario;

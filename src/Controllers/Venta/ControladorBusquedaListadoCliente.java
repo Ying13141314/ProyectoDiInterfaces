@@ -115,7 +115,7 @@ public class ControladorBusquedaListadoCliente extends AbstractControladorVenta 
                         ControladorFichaCliente co = pane.getController();
                         co.setMiApp(miApp);
                         Cliente miClientes = clienteTableView.getSelectionModel().getSelectedItem();
-                        co.mostrarDatosCliente(miClientes);
+                        co.setCliente(miClientes);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }

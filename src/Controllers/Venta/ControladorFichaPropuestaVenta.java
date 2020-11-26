@@ -24,7 +24,7 @@ public class ControladorFichaPropuestaVenta extends AbstractControladorVenta {
     @FXML
     private ChoiceBox<String> cbEstado;
     @FXML
-    private TextField tfNombre,tfPrimerApellido,tfSegundoApellido,tfDNI,tfDireccion;
+    private TextField tfNombre,tfPrimerApellido,tfDNI,tfDireccion;
     @FXML
     private TextArea taPropuesta;
     @FXML
@@ -88,20 +88,18 @@ public class ControladorFichaPropuestaVenta extends AbstractControladorVenta {
         propuestaVenta = new HashMap<>();
         propuestaVenta.put("nombreCliente", tfNombre.getText());
         propuestaVenta.put("primerApellido", tfPrimerApellido.getText());
-        propuestaVenta.put("segundoApellido", tfSegundoApellido.getText());
         propuestaVenta.put("dni", tfDNI.getText());
         propuestaVenta.put("fechaNac", dpFechaNacimiento.getValue().toString());
         propuestaVenta.put("direccion", tfDireccion.getText());
         propuestaVenta.put("estado", cbEstado.getSelectionModel().getSelectedItem());
         propuestaVenta.put("propuesta", taPropuesta.getText());
         propuestaVenta.put("FechaLimi",dpFechaLimite.getValue().toString());
-        miPropuesta = new PropuestaVenta(propuestaVenta);
+        //miPropuesta = new PropuestaVenta(propuestaVenta);
     }
 
     private void actualizar()  {
         miPropuesta.setNombreCliente(tfNombre.getText());
         miPropuesta.setPrimerApellido(tfPrimerApellido.getText());
-        miPropuesta.setSegundoApellido(tfSegundoApellido.getText());
         miPropuesta.setDni(tfDNI.getText());
         miPropuesta.setFechaNac( dpFechaNacimiento.getValue().toString());
         miPropuesta.setDireccion(tfDireccion.getText());
@@ -136,7 +134,6 @@ public class ControladorFichaPropuestaVenta extends AbstractControladorVenta {
     public void mostrarDatosPropuesta(){
         tfNombre.setText(miPropuesta.getNombreCliente());
         tfPrimerApellido.setText(miPropuesta.getPrimerApellido());
-        tfSegundoApellido.setText(miPropuesta.getSegundoApellido());
         tfDNI.setText(miPropuesta.getDni());
         dpFechaNacimiento.setValue(LocalDate.parse(miPropuesta.getFechaNac()));
         dpFechaLimite.setValue(LocalDate.parse(miPropuesta.getFechaLimiteAcep()));
