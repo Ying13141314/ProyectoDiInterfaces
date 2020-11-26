@@ -1,7 +1,5 @@
 package DAO;
 
-import Models.AbstractUsuario;
-import Models.Cliente;
 import Models.Vehiculo;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,7 +15,7 @@ public class VehiculoDAO extends AbstractDAO {
         super.conectar();
 
         //
-        String query = "INSERT INTO vehiculo (marca,modelo,numeroPuertas,precio,fechaEntrada,fechaSalida,numeroRuedas,numeroBastidor,tipoVehiculo,vendido,idConcesionarios) " + "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
+        String query = "INSERT INTO vehiculo (marca,modelo,numeroPuertas,precio,fechaEntrada,fechaSalida,numeroRuedas,numeroBastidor,tipoVehiculo,vendido,idConcesionarios,ano,Kilometros,Combustible) " + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 
         if(!comprobarVehiculo(vehiculo.getNumeroBastidor())){
             PreparedStatement ps = conexion.prepareStatement(query, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
@@ -32,6 +30,9 @@ public class VehiculoDAO extends AbstractDAO {
             ps.setString(9, vehiculo.getTipoVehiculo());
             ps.setString(10, vehiculo.getVendido());
             ps.setInt(11, vehiculo.getIdConsecionario());
+            ps.setInt(12,vehiculo.getAno());
+            ps.setInt(13,vehiculo.getKilometros());
+            ps.setString(14,vehiculo.getCombustible());
             ps.executeUpdate();
         }
 
@@ -43,7 +44,7 @@ public class VehiculoDAO extends AbstractDAO {
      */
     public void actualizarDatos(Vehiculo miVehiculo) {
 
-        String SQL = "UPDATE vehiculo SET marca=?,modelo=?,numeroPuertas=?,vendido=?,fechaEntrada=?,fechaSalida=?,precio=?,numeroRuedas=?,tipoVehiculo=? where numeroBastidor =?";
+        String SQL = "UPDATE vehiculo SET marca=?,modelo=?,numeroPuertas=?,vendido=?,fechaEntrada=?,fechaSalida=?,precio=?,numeroRuedas=?,tipoVehiculo=?,ano=?,Kilometros=?,Combustible=? where numeroBastidor =?";
 
         try{
             PreparedStatement ps = conexion.prepareStatement(SQL);
@@ -56,7 +57,10 @@ public class VehiculoDAO extends AbstractDAO {
             ps.setFloat(7, miVehiculo.getPrecio());
             ps.setInt(8, miVehiculo.getNumeroRuedas());
             ps.setString(9, miVehiculo.getTipoVehiculo());
-            ps.setString(10, miVehiculo.getNumeroBastidor());
+            ps.setInt(10,miVehiculo.getAno());
+            ps.setInt(11,miVehiculo.getKilometros());
+            ps.setString(12,miVehiculo.getCombustible());
+            ps.setString(13, miVehiculo.getNumeroBastidor());
             ps.executeUpdate();
 
             System.out.println("Actualizado");
@@ -99,4 +103,6 @@ public class VehiculoDAO extends AbstractDAO {
         }
         return datosVehiculo;
     }
+
+
 }

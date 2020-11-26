@@ -30,11 +30,11 @@ public class ControladorFichaVehiculo extends AbstractControladorVenta {
     @FXML
     private Button buttonCancelar,buttonBorrar,buttonActualizar;
     @FXML
-    private TextField tfNumeroBastidor,tfMarca,tfModelo,tfPrecio,tfNumeroPuertas,tfNumeroRuedas,tfConcesionario;
+    private TextField tfNumeroBastidor,tfMarca,tfModelo,tfPrecio,tfNumeroPuertas,tfNumeroRuedas,tfConcesionario,tfKilometro,tfAno;
     @FXML
     private DatePicker dpFechaEntrada,dpFechaSalida;
     @FXML
-    private ChoiceBox<String> cbTipoVehiculo,cbEstado;
+    private ChoiceBox<String> cbTipoVehiculo,cbEstado,cbCombustible;
     private Vehiculo miVehiculo;
     private HashMap<String,Object> vehiculo;
 
@@ -61,6 +61,14 @@ public class ControladorFichaVehiculo extends AbstractControladorVenta {
         tipoEstado.add("en venta");
         ObservableList<String> list2 = FXCollections.observableArrayList(tipoEstado);
         cbEstado.setItems(list2);
+
+        ArrayList<String> combustible = new ArrayList<>();
+        combustible.add("diesel");
+        combustible.add("gasolina");
+        combustible.add("hibrido");
+        combustible.add("electrico");
+        ObservableList<String> list3 = FXCollections.observableArrayList(combustible);
+        cbCombustible.setItems(list3);
     }
 
     /**
@@ -117,14 +125,16 @@ public class ControladorFichaVehiculo extends AbstractControladorVenta {
         miVehiculo.setNumeroBastidor(tfNumeroBastidor.getText());
         miVehiculo.setVendido(cbEstado.getSelectionModel().getSelectedItem());
         miVehiculo.setTipoVehiculo(cbTipoVehiculo.getSelectionModel().getSelectedItem());
-        miVehiculo.setIdConsecionario(tfConcesionario.getLength());
+        miVehiculo.setIdConsecionario(Integer.parseInt(tfConcesionario.getText()));
+        miVehiculo.setAno(Integer.parseInt(tfAno.getText()));
+        miVehiculo.setCombustible(cbCombustible.getSelectionModel().getSelectedItem());
+        miVehiculo.setKilometros(Integer.parseInt(tfKilometro.getText()));
     }
 
     /**
      * Método que actualiza los datos del cliente si modificamos los campos.
-     * @throws SQLException
      */
-    private void actualizarDatos() throws SQLException {
+    private void actualizarDatos(){
         actualizar();
         VehiculoDAO miVehiculoDao = new VehiculoDAO();
         miVehiculoDao.actualizarDatos(miVehiculo);
@@ -165,6 +175,9 @@ public class ControladorFichaVehiculo extends AbstractControladorVenta {
         cbTipoVehiculo.setValue(miVehiculo.getTipoVehiculo());
         tfConcesionario.setText(miVehiculo.getIdConsecionario().toString());
         cbEstado.setValue(miVehiculo.getVendido());
+        cbCombustible.setValue(miVehiculo.getCombustible());
+        tfAno.setText(miVehiculo.getAno().toString());
+        tfKilometro.setText(miVehiculo.getKilometros().toString());
     }
 
     /**

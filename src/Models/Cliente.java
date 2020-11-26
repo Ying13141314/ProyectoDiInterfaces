@@ -10,6 +10,7 @@ import java.util.HashMap;
 public class Cliente {
 
     private StringProperty nombre,apellido,dni,fechaNac,direccion,sexo,correo,telefono,tipoComunicacion;
+    private Integer idCliente;
 
     public Cliente(ResultSet rs) throws SQLException {
         nombre = new SimpleStringProperty(rs.getString("nombre"));
@@ -22,6 +23,7 @@ public class Cliente {
         correo = new SimpleStringProperty(rs.getString("correo"));
         telefono = new SimpleStringProperty(rs.getString("telefono"));
         tipoComunicacion = new SimpleStringProperty(rs.getString("tipoComunicacion"));
+        idCliente = rs.getInt("idCliente");
     }
 
     public Cliente(HashMap<String,String> cliente) throws SQLException {
@@ -35,9 +37,10 @@ public class Cliente {
         correo = new SimpleStringProperty(cliente.get("Email"));
         telefono = new SimpleStringProperty(cliente.get("Telefono"));
         tipoComunicacion = new SimpleStringProperty(cliente.get("Opciones"));
+        idCliente = Integer.valueOf(cliente.get("idCliente"));
     }
 
-    public Cliente(StringProperty nombre, StringProperty apellido, StringProperty dni, StringProperty fechaNac, StringProperty direccion, StringProperty sexo, StringProperty correo, StringProperty telefono, StringProperty tipoComunicacion) {
+    public Cliente(StringProperty nombre, StringProperty apellido, StringProperty dni, StringProperty fechaNac, StringProperty direccion, StringProperty sexo, StringProperty correo, StringProperty telefono, StringProperty tipoComunicacion,Integer idCliente) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.dni = dni;
@@ -47,6 +50,15 @@ public class Cliente {
         this.correo = correo;
         this.telefono = telefono;
         this.tipoComunicacion = tipoComunicacion;
+        this.idCliente = idCliente;
+    }
+
+    public Integer getIdCliente() {
+        return idCliente;
+    }
+
+    public void setIdCliente(Integer idCliente) {
+        this.idCliente = idCliente;
     }
 
     public String getNombre() {

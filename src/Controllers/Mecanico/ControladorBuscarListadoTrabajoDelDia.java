@@ -1,13 +1,8 @@
 package Controllers.Mecanico;
 
-import Controllers.Venta.ControladorFichaCliente;
-import Controllers.Venta.ControladorVenta;
-import DAO.ClientesDAO;
-import Models.Cliente;
-import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
+import DAO.TareaDao;
+import Models.Tarea;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -15,12 +10,11 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
 
 import java.io.IOException;
 import java.sql.SQLException;
 
-public class ControladorTrabajoDelDia extends AbstractControladorMecanico{
+public class ControladorBuscarListadoTrabajoDelDia extends AbstractControladorMecanico{
 
     //Estado
     @FXML
@@ -29,27 +23,19 @@ public class ControladorTrabajoDelDia extends AbstractControladorMecanico{
     private Button buttonAceptar;
 
     @FXML
-    private TableView<Cliente> clienteTableView;
+    private TableView<Tarea> clienteTableView;
     @FXML
-    private TableColumn<Cliente, String> campoNombre;
+    private TableColumn<Tarea, String> campoTrabajo;
     @FXML
-    private TableColumn<Cliente, String> campoApellido;
+    private TableColumn<Tarea, String> campoEstado;
     @FXML
-    private TableColumn<Cliente, String> campoDNI;
-    @FXML
-    private TableColumn<Cliente, String> campoTelefono;
-    @FXML
-    private TableColumn<Cliente, String> campoSexo;
-    @FXML
-    private TableColumn<Cliente, String> campoCorreo;
-    @FXML
-    private TextField tfNombre,tfDNI,tfApellido;
-    Cliente miCliente;
+    private TextField tfTrabajo;
+    Tarea miTarea;
 
     /**
      * Controlador Vacio
      */
-    public ControladorTrabajoDelDia() {
+    public ControladorBuscarListadoTrabajoDelDia() {
     }
 
     /**
@@ -89,10 +75,10 @@ public class ControladorTrabajoDelDia extends AbstractControladorMecanico{
 
     /**
      * Método que filtra el cliente por apellido, nombre o dni.
-     * @param miCliente
+     * @param miTareaDao
      * @throws SQLException
      */
-    private void buscarApellido(ClientesDAO miCliente) throws SQLException {
+    private void buscarApellido(TareaDao miTareaDao) throws SQLException {
 
     }
 

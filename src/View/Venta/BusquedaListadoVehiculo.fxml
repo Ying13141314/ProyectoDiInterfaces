@@ -93,18 +93,18 @@
                     </font>
                 </Text>
                 <TextField fx:id="tfMarca" layoutX="148.0" layoutY="119.0" prefHeight="25.0" prefWidth="153.0" />
-                <Text fx:id="modelo" layoutX="355.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modelo:">
+                <Text fx:id="modelo" layoutX="355.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Año:">
                     <font>
                         <Font name="Arial Bold" size="18.0" />
                     </font>
                 </Text>
-                <TextField fx:id="tfModelo" layoutX="458.0" layoutY="119.0" prefHeight="25.0" prefWidth="126.0" />
-                <Text fx:id="tipo" layoutX="635.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tipo:">
+                <TextField fx:id="tfAno" layoutX="458.0" layoutY="119.0" prefHeight="25.0" prefWidth="126.0" />
+                <Text fx:id="tipo" layoutX="635.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Km:">
                     <font>
                         <Font name="Arial Bold" size="18.0" />
                     </font>
                 </Text>
-                <TextField fx:id="tfTipo" layoutX="715.0" layoutY="119.0" prefHeight="25.0" prefWidth="140.0" />
+                <TextField fx:id="tfKm" layoutX="715.0" layoutY="119.0" prefHeight="25.0" prefWidth="140.0" />
                 <ImageView fitHeight="16.0" fitWidth="1327.0" layoutX="-7.0" layoutY="225.0">
                     <image>
                         <Image url="@../Resources/barra.png" />
@@ -118,20 +118,23 @@
                 <Button fx:id="buttonCancelar" layoutX="1108.0" layoutY="533.0" mnemonicParsing="false" onAction="#changeScene" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: #FFFFFF; -fx-border-color: #C0C0C0; -fx-border-radius: 3px;" text="Cancelar" />
                 <TableView fx:id="vehiculoTableView" layoutX="70.0" layoutY="254.0" prefHeight="268.0" prefWidth="1123.0">
                     <columns>
-                        <TableColumn fx:id="campoMarca" prefWidth="159.20001220703125" text="Marca" />
-                        <TableColumn fx:id="campoModelo" minWidth="0.0" prefWidth="282.40000915527344" text="Modelo" />
-                        <TableColumn fx:id="campoTipoVehiculo" prefWidth="156.00006103515625" text="TipoVehículo" />
-                        <TableColumn fx:id="campoConcesionario" prefWidth="181.60003662109375" text="Concesionario" />
-                        <TableColumn fx:id="campoPrecio" prefWidth="113.5999755859375" text="Precio" />
-                        <TableColumn fx:id="campoFechaEntrada" prefWidth="226.199951171875" text="Fecha de Entrada" />
+                        <TableColumn fx:id="campoMarca" prefWidth="128.80001831054688" text="Marca" />
+                        <TableColumn fx:id="campoModelo" minWidth="0.0" prefWidth="167.19998168945312" text="Modelo" />
+                        <TableColumn fx:id="campoTipoVehiculo" prefWidth="183.20001220703125" text="TipoVehículo" />
+                        <TableColumn fx:id="campoConcesionario" prefWidth="136.800048828125" text="Concesionario" />
+                        <TableColumn fx:id="campoPrecio" prefWidth="105.5999755859375" text="Precio" />
+                        <TableColumn fx:id="campoFechaEntrada" prefWidth="130.4000244140625" text="Fecha de Entrada" />
+                  <TableColumn fx:id="campoAno" prefWidth="88.00006103515625" text="Año" />
+                  <TableColumn fx:id="campoKm" prefWidth="64.79998779296875" text="Km" />
+                  <TableColumn fx:id="campoCombustible" prefWidth="113.4000244140625" text="Combustible" />
                     </columns>
                 </TableView>
-                <Text fx:id="concesionario" layoutX="904.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Concesionario:">
+                <Text fx:id="concesionario" layoutX="904.0" layoutY="138.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Combustible:">
                     <font>
                         <Font name="Arial Bold" size="18.0" />
                     </font>
                 </Text>
-                <TextField fx:id="tfConcesionario" layoutX="1062.0" layoutY="119.0" prefHeight="25.0" prefWidth="131.0" />
+                <TextField fx:id="tfCombustible" layoutX="1062.0" layoutY="119.0" prefHeight="25.0" prefWidth="131.0" />
             </children>
         </Pane>
         <Pane layoutY="668.0" prefHeight="55.0" prefWidth="1280.0" style="-fx-background-color: #e9c46a;">

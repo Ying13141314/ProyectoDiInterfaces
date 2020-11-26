@@ -19,21 +19,24 @@ public class VentaPropuestaDAO extends AbstractDAO{
      */
     public void darAltaPropuesta(PropuestaVenta miVenta, Text textError){
 
-        String SSQL = "INSERT INTO ventas (nombreCliente,primerApellido,segundoApellido,dni,fechaNacimiento,direccion,propuesta,estado,fechaLimiteAceptación)"
-                + "VALUES (?,?,?,?,?,?,?,?,?)";
+        String SSQL = "INSERT INTO ventas (nombreCliente,primerApellido,dni,fechaNacimiento,direccion,propuesta,estado,fechaLimiteAceptación,idVehiculo,idCliente,idVendedor)"
+                + "VALUES (?,?,?,?,?,?,?,?,?,?,?)";
         try {
             if(!comprobarDni(miVenta.getDni())){
                 textError.setText("");
                 PreparedStatement pt = conexion.prepareStatement(SSQL);
                 pt.setString(1, miVenta.getNombreCliente());
                 pt.setString(2, miVenta.getPrimerApellido());
-                pt.setString(3,miVenta.getSegundoApellido());
-                pt.setString(4, miVenta.getDni());
-                pt.setString(5, miVenta.getFechaNac());
-                pt.setString(6,miVenta.getDireccion());
-                pt.setString(7,miVenta.getPropuesta());
-                pt.setString(8,miVenta.getEstado());
-                pt.setString(9,miVenta.getFechaLimiteAcep());
+                pt.setString(3, miVenta.getDni());
+                pt.setString(4, miVenta.getFechaNac());
+                pt.setString(5,miVenta.getDireccion());
+                pt.setString(6,miVenta.getPropuesta());
+                pt.setString(7,miVenta.getEstado());
+                pt.setString(8,miVenta.getFechaLimiteAcep());
+                pt.setInt(9,miVenta.getIdVehiculo());
+                pt.setInt(10,miVenta.getIdCliente());
+                pt.setInt(11,miVenta.getIdVendedor());
+
 
                 pt.executeUpdate();
                 System.out.println("Terminado");
@@ -45,7 +48,6 @@ public class VentaPropuestaDAO extends AbstractDAO{
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        super.cerrarBasesDatos();
     }
 
     /**
@@ -54,19 +56,19 @@ public class VentaPropuestaDAO extends AbstractDAO{
      */
     public void actualizarDatos(PropuestaVenta miVenta) {
 
-        String SQL = "UPDATE ventas SET nombreCliente=?,primerApellido=?,segundoApellido=?,fechaNacimiento=?,direccion=?,propuesta=?,estado=?,fechaLimiteAceptación=? where dni =?";
+        String SQL = "UPDATE ventas SET nombreCliente=?,primerApellido=?,fechaNacimiento=?,direccion=?,propuesta=?,estado=?,fechaLimiteAceptación=? where dni =?";
+
 
         try{
             PreparedStatement ps = conexion.prepareStatement(SQL);
             ps.setString(1, miVenta.getNombreCliente());
             ps.setString(2, miVenta.getPrimerApellido());
-            ps.setString(3, miVenta.getSegundoApellido());
-            ps.setString(4, miVenta.getFechaNac());
-            ps.setString(5, miVenta.getDireccion());
-            ps.setString(6, miVenta.getPropuesta());
-            ps.setString(7, miVenta.getEstado());
-            ps.setString(8, miVenta.getFechaLimiteAcep());
-            ps.setString(9, miVenta.getDni());
+            ps.setString(3, miVenta.getFechaNac());
+            ps.setString(4, miVenta.getDireccion());
+            ps.setString(5, miVenta.getPropuesta());
+            ps.setString(6, miVenta.getEstado());
+            ps.setString(7, miVenta.getFechaLimiteAcep());
+            ps.setString(8, miVenta.getDni());
 
             ps.executeUpdate();
 

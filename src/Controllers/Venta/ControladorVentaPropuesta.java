@@ -4,9 +4,7 @@ import Controllers.AbstractControladorVenta;
 import DAO.ClientesDAO;
 import DAO.VehiculoDAO;
 import DAO.VentaPropuestaDAO;
-import Models.Cliente;
-import Models.PropuestaVenta;
-import Models.Vehiculo;
+import Models.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,6 +17,7 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -34,11 +33,9 @@ public class ControladorVentaPropuesta extends AbstractControladorVenta {
     @FXML
     Text textError;
     @FXML
-    TextField tfNombre;
+    TextField tfNombrePropuesta;
     @FXML
     TextField tfPrimerApellido;
-    @FXML
-    TextField tfSegundoApellido;
     @FXML
     TextField tfDNI;
     @FXML
@@ -52,9 +49,17 @@ public class ControladorVentaPropuesta extends AbstractControladorVenta {
     @FXML
     ChoiceBox cbEstado;
     @FXML
+    ChoiceBox <Vehiculo> cbVehiculo;
+    @FXML
     Button buttonCancelar;
     @FXML
     Button buttonAceptar;
+
+    private Cliente miCliente;
+
+    private Vehiculo miVehiculo;
+
+    private Venta miVenta;
 
     /**
      * Controlador Vacio
@@ -66,7 +71,9 @@ public class ControladorVentaPropuesta extends AbstractControladorVenta {
      * Método Initialize que se ejecuta después de cargar la vista.
      */
     @FXML
-    public void initialize(){cargarDesplegables();}
+    public void initialize() throws SQLException {
+        cargarDesplegables();
+    }
 
     /**
      * Método que sirve para cambiar de una venta a otra dependiendo que boton se ha elegido.
@@ -80,17 +87,18 @@ public class ControladorVentaPropuesta extends AbstractControladorVenta {
             ruta = "/View/Venta/Venta.fxml";
 
         } else if (e.getSource().equals(buttonAceptar)){
-            HashMap<String,Object> propuesta = new HashMap<>();
-            propuesta.put("nombreCliente", tfNombre.getText());
+            HashMap<String,String> propuesta = new HashMap<>();
+            propuesta.put("nombreCliente", tfNombrePropuesta.getText());
             propuesta.put("primerApellido", tfPrimerApellido.getText());
-            propuesta.put("segundoApellido", tfSegundoApellido.getText());
             propuesta.put("dni", tfDNI.getText());
             propuesta.put("estado", cbEstado.getSelectionModel().getSelectedItem().toString());
             propuesta.put("fechaNac", dpFechaNacimiento.getValue().toString());
             propuesta.put("FechaLimite", dpFechaLimite.getValue().toString());
             propuesta.put("direccion", tfDireccion.getText());
             propuesta.put("propuesta", taPropuesta.getText());
-            propuesta.put("fechaLimiteAcep", dpFechaLimite.getValue().toString());
+            propuesta.put("idCliente",miCliente.getIdCliente().toString());
+            propuesta.put("idVehiculo",cbVehiculo.getValue().getIdVehiculo().toString());
+            propuesta.put("idVendedor",miApp.getMiUsuario().getId());
 
             PropuestaVenta p = new PropuestaVenta(propuesta);
             VentaPropuestaDAO vpdao = new VentaPropuestaDAO();
@@ -106,12 +114,40 @@ public class ControladorVentaPropuesta extends AbstractControladorVenta {
             co.setMiApp(miApp);
         }
     }
-    public void cargarDesplegables(){
+
+    public void mostrarDatosCliente(){
+        tfNombrePropuesta.setText(miCliente.getNombre());
+        tfPrimerApellido.setText(miCliente.getApellido());
+        tfDNI.setText(miCliente.getDni());
+        dpFechaNacimiento.setValue(LocalDate.parse(miCliente.getFechaNac()));
+        tfDireccion.setText(miCliente.getDireccion());
+    }
+
+    public void cargarDesplegables() throws SQLException {
         ArrayList<String> estado = new ArrayList<>();
         estado.add("aceptada");
         estado.add("rechazada");
         estado.add("pendiente");
         ObservableList<String> list = FXCollections.observableArrayList(estado);
         cbEstado.setItems(list);
+
+        VehiculoDAO miVehiculo = new VehiculoDAO();
+        ObservableList<Vehiculo> datosVehiculo = miVehiculo.anadirVehiculoLista();
+        cbVehiculo.setItems(datosVehiculo);
+        cbVehiculo.toString();
+    }
+
+
+    public void setCliente(Cliente miCliente){
+        this.miCliente = miCliente;
+        mostrarDatosCliente();
+
+    }
+    public void setVehiculo(Vehiculo miVehiculo){
+        this.miVehiculo = miVehiculo;
+    }
+
+    public void setVenta(Venta miVenta){
+        this.miVenta = miVenta;
     }
 }

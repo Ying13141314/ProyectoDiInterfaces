@@ -75,7 +75,7 @@
                     </children></Pane>
             </children>
         </Pane>
-        <Pane layoutY="95.0" prefHeight="573.0" prefWidth="1280.0">
+        <Pane layoutX="-14.0" layoutY="95.0" prefHeight="573.0" prefWidth="1280.0">
             <children>
                 <ImageView fitHeight="16.0" fitWidth="1327.0" layoutX="-24.0" layoutY="73.0">
                     <image>
@@ -162,6 +162,24 @@
             <TextField fx:id="tfConcesionario" layoutX="257.0" layoutY="421.0" prefHeight="25.0" prefWidth="180.0" />
             <Text fx:id="textError" fill="RED" layoutX="475.0" layoutY="538.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="540.13671875" />
             <Button fx:id="buttonBorrar" layoutX="956.0" layoutY="521.0" mnemonicParsing="false" onAction="#changeScene" prefHeight="25.0" prefWidth="85.0" style="-fx-background-color: #000000;" text="Borrar" textFill="WHITE" />
+            <Text fx:id="textBienvenido111112211" layoutX="517.0" layoutY="440.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Combustible:">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </Text>
+            <ChoiceBox fx:id="cbCombustible" layoutX="686.0" layoutY="420.0" prefHeight="25.0" prefWidth="170.0" style="-fx-border-color: #C0C0C0; -fx-background-color: #FFFFFF; -fx-border-radius: 3px;" />
+            <Text layoutX="517.0" layoutY="490.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kilómetro:">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </Text>
+            <TextField fx:id="tfKilometro" layoutX="686.0" layoutY="470.0" prefHeight="25.0" prefWidth="170.0" />
+            <Text fx:id="textBienvenido111112212" layoutX="517.0" layoutY="540.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Año:">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </Text>
+            <TextField fx:id="tfAno" layoutX="686.0" layoutY="521.0" prefHeight="25.0" prefWidth="170.0" />
             </children>
         </Pane>
         <Pane layoutY="668.0" prefHeight="55.0" prefWidth="1280.0" style="-fx-background-color: #e9c46a;">

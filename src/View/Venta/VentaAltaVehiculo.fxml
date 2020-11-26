@@ -160,12 +160,30 @@
             </Text>
             <ChoiceBox fx:id="cbEstado" layoutX="1072.0" layoutY="218.0" prefHeight="25.0" prefWidth="170.0" style="-fx-border-color: #C0C0C0; -fx-background-color: #FFFFFF; -fx-border-radius: 3px;" />
             <ChoiceBox fx:id="cbTipoVehiculo" layoutX="1072.0" layoutY="167.0" prefHeight="25.0" prefWidth="170.0" style="-fx-border-color: #C0C0C0; -fx-background-color: #FFFFFF; -fx-border-radius: 3px;" />
-            <Text fx:id="textBienvenido11112" layoutX="851.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Concesionario:">
+            <Text fx:id="lbConcesionarios" layoutX="851.0" layoutY="292.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Concesionario:">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </Text>
-            <TextField fx:id="tfConcesionario" layoutX="1072.0" layoutY="274.0" prefHeight="25.0" prefWidth="170.0" />
+            <TextField fx:id="tfConcesionario" layoutX="1072.0" layoutY="272.0" prefHeight="25.0" prefWidth="170.0" />
+            <Text fx:id="textBienvenido1111111" layoutX="41.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Año:">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </Text>
+            <TextField fx:id="tfAno" layoutX="150.0" layoutY="318.0" prefHeight="25.0" prefWidth="170.0" />
+            <Text fx:id="textBienvenido11112" layoutX="382.0" layoutY="336.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Combustible:">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </Text>
+            <ChoiceBox fx:id="cbCombustible" layoutX="615.0" layoutY="317.0" prefHeight="25.0" prefWidth="170.0" style="-fx-border-color: #C0C0C0; -fx-background-color: #FFFFFF; -fx-border-radius: 3px;" />
+            <Text fx:id="lbConcesionarios1" layoutX="852.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kilometro:">
+               <font>
+                  <Font name="Arial Bold" size="18.0" />
+               </font>
+            </Text>
+            <TextField fx:id="tfKilometro" layoutX="1072.0" layoutY="318.0" prefHeight="25.0" prefWidth="170.0" />
             </children>
         </Pane>
         <Pane layoutY="668.0" prefHeight="55.0" prefWidth="1280.0" style="-fx-background-color: #e9c46a;">

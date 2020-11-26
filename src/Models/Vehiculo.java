@@ -8,9 +8,10 @@ import java.util.HashMap;
 
 public class Vehiculo {
 
-    private IntegerProperty idVehiculo, numeroPuertas,numeroRuedas, idConsecionario;
-    private StringProperty marca,modelo,fechaEntrada,fechaSalida,numeroBastidor,tipoVehiculo,vendido;
+    private IntegerProperty numeroPuertas,numeroRuedas, idConsecionario,ano,kilometros;
+    private StringProperty marca,modelo,fechaEntrada,fechaSalida,numeroBastidor,tipoVehiculo,vendido,combustible;
     private FloatProperty precio;
+    private Integer idVehiculo;
 
     public Vehiculo(ResultSet rs) throws SQLException {
         marca = new SimpleStringProperty(rs.getString("marca"));
@@ -27,14 +28,19 @@ public class Vehiculo {
         idConsecionario = new SimpleIntegerProperty(rs.getInt("idConcesionarios"));
         numeroBastidor = new SimpleStringProperty(rs.getString("numeroBastidor"));
         tipoVehiculo = new SimpleStringProperty(rs.getString("tipoVehiculo"));
+        ano = new SimpleIntegerProperty(rs.getInt("ano"));
+        kilometros = new SimpleIntegerProperty(rs.getInt("kilometros"));
+        combustible = new SimpleStringProperty(rs.getString("combustible"));
+
         precio = new SimpleFloatProperty(rs.getFloat("precio"));
+        idVehiculo = rs.getInt("idVehiculo");
     }
 
-    public Vehiculo(HashMap<String,Object> vehiculo) throws SQLException {
+    public Vehiculo(HashMap<String,Object> vehiculo){
         marca = new SimpleStringProperty((String) vehiculo.get("Marca"));
         modelo = new SimpleStringProperty((String) vehiculo.get("Modelo"));
         precio = new SimpleFloatProperty(Float.parseFloat((String)vehiculo.get("Precio")));
-        vendido = new SimpleStringProperty((String) vehiculo.get("vendido"));
+        vendido = new SimpleStringProperty((String) vehiculo.get("Estado"));
         numeroPuertas = new SimpleIntegerProperty(Integer.parseInt((String)vehiculo.get("NumeroPuertas")));
         numeroRuedas = new SimpleIntegerProperty(Integer.parseInt((String)vehiculo.get("NumeroRuedas")));
         numeroBastidor = new SimpleStringProperty((String) vehiculo.get("NumeroBastidor"));
@@ -42,10 +48,50 @@ public class Vehiculo {
         idConsecionario = new SimpleIntegerProperty(Integer.parseInt((String)vehiculo.get("IdConcesionario")));
         fechaEntrada = new SimpleStringProperty((String) vehiculo.get("FechaEntrada"));
         fechaSalida = new SimpleStringProperty((String) vehiculo.get("FechaSalida"));
+        ano = new SimpleIntegerProperty(Integer.parseInt((String)vehiculo.get("ano")));
+        kilometros = new SimpleIntegerProperty(Integer.parseInt((String)vehiculo.get("kilometros")));
+        combustible = new SimpleStringProperty((String)vehiculo.get("combustible"));
+        idVehiculo = (Integer) vehiculo.get("idVehiculo");
     }
 
     // getter and setter
 
+
+    public Integer getAno() {
+        return ano.get();
+    }
+
+    public IntegerProperty anoProperty() {
+        return ano;
+    }
+
+    public void setAno(int ano) {
+        this.ano.set(ano);
+    }
+
+    public Integer getKilometros() {
+        return kilometros.get();
+    }
+
+    public IntegerProperty kilometrosProperty() {
+        return kilometros;
+    }
+
+    public void setKilometros(int kilometros) {
+        this.kilometros.set(kilometros);
+    }
+
+    public String getCombustible() {
+        return combustible.get();
+    }
+
+    public StringProperty combustibleProperty() {
+        return combustible;
+    }
+
+    public void setCombustible(String combustible) {
+        this.combustible.set(combustible);
+    }
 
     public Integer getIdConsecionario() {
         return idConsecionario.get();
@@ -63,16 +109,12 @@ public class Vehiculo {
         this.tipoVehiculo.set(tipoVehiculo);
     }
 
-    public int getIdVehiculo() {
-        return idVehiculo.get();
-    }
-
-    public IntegerProperty idVehiculoProperty() {
+    public Integer getIdVehiculo() {
         return idVehiculo;
     }
 
-    public void setIdVehiculo(int idVehiculo) {
-        this.idVehiculo.set(idVehiculo);
+    public void setIdVehiculo(Integer idVehiculo) {
+        this.idVehiculo = idVehiculo;
     }
 
     public Integer getNumeroPuertas() {
@@ -201,4 +243,12 @@ public class Vehiculo {
     public StringProperty tipoVehiculoProperty() {
         return tipoVehiculo;
     }
+
+    @Override
+    public String toString() {
+        return marca.get()+" "+modelo.get();
+    }
+
+
+
 }

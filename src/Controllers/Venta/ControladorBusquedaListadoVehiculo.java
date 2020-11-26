@@ -33,15 +33,15 @@ public class ControladorBusquedaListadoVehiculo extends AbstractControladorVenta
     @FXML
     private TableColumn<Vehiculo, String> campoModelo;
     @FXML
-    private TableColumn<Vehiculo, String> campoTipoVehiculo;
+    private TableColumn<Vehiculo, String> campoTipoVehiculo,campoCombustible;
     @FXML
-    private TableColumn<Vehiculo, Integer> campoConcesionario;
+    private TableColumn<Vehiculo, Integer> campoConcesionario,campoAno,campoKm;
     @FXML
     private TableColumn<Vehiculo, Float> campoPrecio;
     @FXML
     private TableColumn<Vehiculo, String> campoFechaEntrada;
     @FXML
-    private TextField tfMarca, tfModelo, tfTipo,tfConcesionario;
+    private TextField tfMarca, tfKm, tfAno,tfCombustible;
     Vehiculo miVehiculo;
 
     /**
@@ -65,8 +65,11 @@ public class ControladorBusquedaListadoVehiculo extends AbstractControladorVenta
         campoConcesionario.setCellValueFactory(cellData -> cellData.getValue().idConsecionarioProperty().asObject());
         campoPrecio.setCellValueFactory(cellData -> cellData.getValue().precioProperty().asObject());
         campoFechaEntrada.setCellValueFactory(cellData -> cellData.getValue().fechaEntradaProperty());
+        campoAno.setCellValueFactory(cellData -> cellData.getValue().anoProperty().asObject());
+        campoCombustible.setCellValueFactory(cellData -> cellData.getValue().combustibleProperty());
+        campoKm.setCellValueFactory(cellData -> cellData.getValue().kilometrosProperty().asObject());
 
-        buscarApellido(miVehiculoDao);
+        buscarVehiculo(miVehiculoDao);
         cambiarFichaVehiculo();
     }
 
@@ -124,25 +127,36 @@ public class ControladorBusquedaListadoVehiculo extends AbstractControladorVenta
      * @param miVehiculoDao
      * @throws SQLException
      */
-    private void buscarApellido(VehiculoDAO miVehiculoDao) throws SQLException {
+    private void buscarVehiculo(VehiculoDAO miVehiculoDao) throws SQLException {
         FilteredList<Vehiculo> filteredData = new FilteredList<Vehiculo>(miVehiculoDao.anadirVehiculoLista(), p -> true);
         vehiculoTableView.setItems(filteredData);
 
-        tfTipo.setPromptText("Buscar...");
-        tfTipo.textProperty().addListener((prop, old, text) -> {
+        tfAno.setPromptText("Buscar...");
+        tfAno.textProperty().addListener((prop, old, text) -> {
             filteredData.setPredicate(vehiculo -> {
                 if(text == null || text.isEmpty()) return true;
 
-                String name = vehiculo.getTipoVehiculo().toLowerCase();
-                return name.contains(text.toLowerCase());
+                String name = vehiculo.getAno().toString();
+                return name.equals(text.toLowerCase());
             });
         });
-        tfModelo.setPromptText("Buscar...");
-        tfModelo.textProperty().addListener((prop, old, text) -> {
+
+        tfKm.setPromptText("Buscar...");
+        tfKm.textProperty().addListener((prop, old, text) -> {
             filteredData.setPredicate(vehiculo -> {
                 if(text == null || text.isEmpty()) return true;
 
-                String name = miVehiculo.getModelo().toLowerCase();
+                String name = vehiculo.getKilometros().toString();
+                return name.equals(text.toLowerCase());
+            });
+        });
+
+        tfCombustible.setPromptText("Buscar...");
+        tfCombustible.textProperty().addListener((prop, old, text) -> {
+            filteredData.setPredicate(vehiculo -> {
+                if(text == null || text.isEmpty()) return true;
+
+                String name = vehiculo.getCombustible().toLowerCase();
                 return name.contains(text.toLowerCase());
             });
         });
@@ -151,10 +165,11 @@ public class ControladorBusquedaListadoVehiculo extends AbstractControladorVenta
             filteredData.setPredicate(vehiculo -> {
                 if(text == null || text.isEmpty()) return true;
 
-                String name = miVehiculo.getMarca().toLowerCase();
+                String name = vehiculo.getMarca().toLowerCase();
                 return name.contains(text.toLowerCase());
             });
         });
+
     }
 }
 
