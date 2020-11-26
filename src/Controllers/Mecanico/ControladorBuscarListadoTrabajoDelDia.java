@@ -1,7 +1,7 @@
 package Controllers.Mecanico;
 
 import DAO.TareaDao;
-import Models.Tarea;
+import Models.Trabajo;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -23,14 +23,14 @@ public class ControladorBuscarListadoTrabajoDelDia extends AbstractControladorMe
     private Button buttonAceptar;
 
     @FXML
-    private TableView<Tarea> clienteTableView;
+    private TableView<Trabajo> clienteTableView;
     @FXML
-    private TableColumn<Tarea, String> campoTrabajo;
+    private TableColumn<Trabajo, String> campoTrabajo;
     @FXML
-    private TableColumn<Tarea, String> campoEstado;
+    private TableColumn<Trabajo, String> campoEstado;
     @FXML
     private TextField tfTrabajo;
-    Tarea miTarea;
+    Trabajo miTarea;
 
     /**
      * Controlador Vacio
