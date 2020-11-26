@@ -9,7 +9,7 @@ import java.util.HashMap;
 
 public class Trabajo {
 
-    private IntegerProperty idtrabajo, cliente, numeroPuertas,numeroRuedas, idConcesionario, idMecanico;
+    private IntegerProperty cliente, numeroPuertas,numeroRuedas, idConcesionario, idMecanico;
     private BooleanProperty vendido;
     private StringProperty mecanico,marca,telefono,modelo,fechaEntrada,fechaSalida,numeroBastidor,tipotrabajo,email,observaciones, piezas;
     private FloatProperty presupuesto;
@@ -32,7 +32,7 @@ public class Trabajo {
     }
 
     public Trabajo(HashMap<String,Object> trabajo) throws SQLException {
-        idMecanico = new SimpleIntegerProperty(Integer.parseInt((String)trabajo.get("IdMecanico")));
+        idMecanico = new SimpleIntegerProperty(5);
         mecanico = new SimpleStringProperty((String) trabajo.get("Mecanico"));
         cliente = new SimpleIntegerProperty(Integer.parseInt((String)trabajo.get("Cliente")));
         marca = new SimpleStringProperty((String) trabajo.get("Marca"));
@@ -42,6 +42,8 @@ public class Trabajo {
         observaciones = new SimpleStringProperty((String) trabajo.get("Observaciones"));
         email = new SimpleStringProperty((String) trabajo.get("Email"));
         piezas = new SimpleStringProperty((String) trabajo.get("Piezas"));
+        fechaEntrada = new SimpleStringProperty((String) trabajo.get("FechaEntrada"));
+        fechaSalida = new SimpleStringProperty(null);
     }
 
     public int getIdConcesionario() {
@@ -66,18 +68,6 @@ public class Trabajo {
 
     public void setPiezas(String piezas) {
         this.piezas.set(piezas);
-    }
-
-    public int getIdtrabajo() {
-        return idtrabajo.get();
-    }
-
-    public IntegerProperty idtrabajoProperty() {
-        return idtrabajo;
-    }
-
-    public void setIdtrabajo(int idtrabajo) {
-        this.idtrabajo.set(idtrabajo);
     }
 
     public int getCliente() {

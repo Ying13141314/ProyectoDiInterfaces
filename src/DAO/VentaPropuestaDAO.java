@@ -33,7 +33,7 @@ public class VentaPropuestaDAO extends AbstractDAO{
                 pt.setString(6,miVenta.getPropuesta());
                 pt.setString(7,miVenta.getEstado());
                 pt.setString(8,miVenta.getFechaLimiteAcep());
-                //pt.setInt(9,miVenta.getIdVehiculo());
+                pt.setInt(9,miVenta.getIdVehiculo());
                 pt.setInt(10,miVenta.getIdCliente());
                 pt.setInt(11,miVenta.getIdVendedor());
 

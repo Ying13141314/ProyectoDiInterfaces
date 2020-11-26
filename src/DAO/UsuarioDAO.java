@@ -66,11 +66,16 @@ public class UsuarioDAO extends AbstractDAO {
     }
 
     public Integer obtenerIdMecanico(String nombreMecanico) throws SQLException {
-        String sql = "SELECT idUsuario from usuario where nombre = "+nombreMecanico;
+        StringBuilder sb = new StringBuilder();
+        sb.append("'");
+        sb.append(nombreMecanico);
+        sb.append("'");
+        System.out.println(sb);
+        String sql = "SELECT idUsuario from usuario where nombre = "+sb;
 
         Statement stm = conexion.createStatement();
         ResultSet rs = stm.executeQuery(sql);
-
+        rs.next();
         return rs.getInt("idUsuario");
     }
 }

@@ -16,7 +16,7 @@ public class ControladorMecanico extends AbstractControladorMecanico {
     @FXML
     private Text textUsuario;
     @FXML
-    private Button buttonTrabajos,buttonCrearCliente;
+    private Button buttonTrabajos,buttonCrearCliente, buttonCrearCliente1;
 
     /**
      * Controlador Vacio
@@ -29,7 +29,7 @@ public class ControladorMecanico extends AbstractControladorMecanico {
      */
     @FXML
     public void initialize(){
-        textUsuario.setText(Main.miUsuario.getNombre());
+//        textUsuario.setText(Main.miUsuario.getNombre());
     }
 
     /**
@@ -44,6 +44,8 @@ public class ControladorMecanico extends AbstractControladorMecanico {
             ruta = "/View/Mecanico/TrabajoDelDia.fxml";
         } else if (e.getSource().equals(buttonCrearCliente)){
             ruta = "/View/Venta/BusquedaListadoClientes.fxml";
+        } else if (e.getSource().equals(buttonCrearCliente1)){
+            ruta = "/View/Mecanico/FichaCrearTrabajo.fxml";
         }
         FXMLLoader pane = new FXMLLoader(getClass().getResource(ruta));
         miApp.getPrimaryStage().setScene(new Scene(pane.load(), 1280, 720));
@@ -53,6 +55,9 @@ public class ControladorMecanico extends AbstractControladorMecanico {
             co.setMiApp(miApp);
 
         } else if (e.getSource().equals(buttonCrearCliente)){
+            AbstractControladorMecanico co = pane.getController();
+            co.setMiApp(miApp);
+        } else if (e.getSource().equals(buttonCrearCliente1)){
             AbstractControladorMecanico co = pane.getController();
             co.setMiApp(miApp);
         }

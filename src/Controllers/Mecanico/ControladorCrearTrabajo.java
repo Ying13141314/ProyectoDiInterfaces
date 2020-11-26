@@ -29,13 +29,13 @@ public class ControladorCrearTrabajo extends AbstractControladorMecanico {
     Text textError;
 
     @FXML
-    ChoiceBox cbMecanico, cbPiezas;
+    ChoiceBox cbMecanico;
 
     @FXML
     DatePicker dpFecha;
 
     @FXML
-    TextField tfCliente, tfEmail, tfTelefono, tfMarca,  tfModelo, tfPresupuesto, tfPiezas, tfObservaciones;
+    TextField tfCliente, tfEmail, tfTelefono, tfMarca,  tfModelo, tfPresupuesto, tfPiezas;
 
     @FXML
     private Button buttonTrabajos,buttonCrearCliente;
@@ -66,16 +66,18 @@ public class ControladorCrearTrabajo extends AbstractControladorMecanico {
     public void changeScene(ActionEvent e) throws IOException, SQLException {
         String ruta = "";
         if (e.getSource().equals(buttonTrabajos)) {
+            Integer idMecanico = obtenerIdMecanico(cbMecanico.getSelectionModel().getSelectedItem().toString());
             HashMap<String,Object> trabajo = new HashMap<>();
-            trabajo.put("IdMecanico", obtenerIdMecanico(cbMecanico.getSelectionModel().getSelectedItem().toString()));
+            trabajo.put("IdMecanico", idMecanico);
             trabajo.put("Mecanico", tfCliente.getText());
-            trabajo.put("Fecha", dpFecha.getValue().toString());
+            trabajo.put("FechaEntrada", dpFecha.getValue().toString());
             trabajo.put("Cliente", tfCliente.getText());
             trabajo.put("Marca", tfMarca.getText());
             trabajo.put("Modelo", tfModelo.getText());
+            trabajo.put("Presupuesto", tfPresupuesto.getText());
             trabajo.put("Email", tfEmail.getText());
             trabajo.put("Telefono", tfTelefono.getText());
-            trabajo.put("Piezas", cbPiezas.getSelectionModel().getSelectedItem().toString());
+            trabajo.put("Piezas", tfPiezas.getText());
 
             try {
                 Trabajo t = new Trabajo(trabajo);

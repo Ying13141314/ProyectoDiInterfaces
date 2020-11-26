@@ -88,7 +88,6 @@ public class AbstractControladorMecanico {
 
         } else if (e.getSource().equals(panelTrabajoAsignado)){
             ruta = "/View/Mecanico/TrabajoDelDia.fxml";
-
         }
         FXMLLoader pane = new FXMLLoader(getClass().getResource(ruta));
         miApp.getPrimaryStage().setScene(new Scene(pane.load(), 1280, 720));
