@@ -62,19 +62,19 @@
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </Text>
-            <TextField fx:id="tfNombre" layoutX="240.0" layoutY="220.0" prefHeight="25.0" prefWidth="170.0" />
+            <TextField fx:id="tfCliente" layoutX="240.0" layoutY="220.0" prefHeight="25.0" prefWidth="170.0" />
             <Text fx:id="textBienvenido111" layoutX="55.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Email:">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </Text>
-            <TextField fx:id="tfNombre1" layoutX="240.0" layoutY="270.0" prefHeight="25.0" prefWidth="170.0" />
+            <TextField fx:id="tfEmail" layoutX="240.0" layoutY="270.0" prefHeight="25.0" prefWidth="170.0" />
             <Text fx:id="textBienvenido1111" layoutX="481.0" layoutY="290.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Presupuesto:">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </Text>
-            <TextField fx:id="tfNombre11" layoutX="240.0" layoutY="320.0" prefHeight="25.0" prefWidth="170.0" />
+            <TextField fx:id="tfTelefono" layoutX="240.0" layoutY="320.0" prefHeight="25.0" prefWidth="170.0" />
             <Text fx:id="textBienvenido11111" layoutX="53.0" layoutY="420.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Observaciones:">
                <font>
                   <Font name="Arial Bold" size="18.0" />
@@ -116,26 +116,27 @@
                   </Text>
                </children>
             </Pane>
-            <ChoiceBox fx:id="cbSexo" layoutX="240.0" layoutY="95.0" prefHeight="27.0" prefWidth="646.0" style="-fx-border-color: #C0C0C0; -fx-background-color: #FFFFFF; -fx-border-radius: 3px;" />
-            <TextField fx:id="tfNombre2" layoutX="716.0" layoutY="171.0" prefHeight="25.0" prefWidth="170.0" />
+            <ChoiceBox fx:id="cbMecanico" layoutX="240.0" layoutY="95.0" prefHeight="27.0" prefWidth="646.0" style="-fx-border-color: #C0C0C0; -fx-background-color: #FFFFFF; -fx-border-radius: 3px;" />
+            <TextField fx:id="tfMarca" layoutX="716.0" layoutY="171.0" prefHeight="25.0" prefWidth="170.0" />
             <Button fx:id="buttonTrabajos" layoutX="564.0" layoutY="497.0" mnemonicParsing="false" onAction="#changeScene" prefHeight="40.0" prefWidth="152.0" style="-fx-background-color: #232323;" text="REGISTRAR" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="16.0" />
                </font>
             </Button>
-            <TextField fx:id="tfNombre22" layoutX="716.0" layoutY="222.0" prefHeight="25.0" prefWidth="170.0" />
-            <ChoiceBox fx:id="cbSexo1" layoutX="716.0" layoutY="320.0" prefHeight="27.0" prefWidth="170.0" style="-fx-border-color: #C0C0C0; -fx-background-color: #FFFFFF; -fx-border-radius: 3px;" />
+            <TextField fx:id="tfModelo" layoutX="716.0" layoutY="222.0" prefHeight="25.0" prefWidth="170.0" />
+            <ChoiceBox fx:id="cbPiezas" layoutX="716.0" layoutY="320.0" prefHeight="27.0" prefWidth="170.0" style="-fx-border-color: #C0C0C0; -fx-background-color: #FFFFFF; -fx-border-radius: 3px;" />
             <Text fx:id="textBienvenido11212" layoutX="481.0" layoutY="239.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Modelo:">
                <font>
                   <Font name="Arial Bold" size="18.0" />
                </font>
             </Text>
-            <TextField fx:id="tfNombre221" layoutX="715.0" layoutY="270.0" prefHeight="25.0" prefWidth="170.0" />
+            <TextField fx:id="tfPresupuesto" layoutX="715.0" layoutY="270.0" prefHeight="25.0" prefWidth="170.0" />
             <ImageView fitHeight="184.0" fitWidth="312.0" layoutX="929.0" layoutY="141.0">
                <image>
                   <Image url="@../Resources/silueta.png" />
                </image>
             </ImageView>
+            <Text fx:id="textError" fill="RED" layoutX="55.0" layoutY="530.0" strokeType="OUTSIDE" strokeWidth="0.0" />
             </children>
         </Pane>
         <Pane layoutY="668.0" prefHeight="55.0" prefWidth="1280.0" style="-fx-background-color: #e9c46a;">

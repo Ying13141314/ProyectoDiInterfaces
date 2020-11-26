@@ -120,4 +120,5 @@ public class ControladorVentaAltaCliente extends AbstractControladorVenta {
         ObservableList<String> list2 = FXCollections.observableArrayList(aviso);
         cbOpciones.setItems(list2);
     }
+
 }
